@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Conatus Web - Soluciones Tecnológicas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Desarrollo de páginas web y sistemas empresariales" />
+	<meta name="keywords" content="Web, Software, intranet, HTML, Php, jquery, wordpress, woocommerce, CMS, css" />
+	<meta name="author" content="Conatus Web" />
+	<meta name="email" content="info@conatusweb.com" />
+	<meta name="website" content="https://www.conatusweb.com" />
+	<meta name="Version" content="v2.2" />
+	<!-- favicon -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<!-- Icons -->
+	<link href="css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.css">
+	<!-- Magnific -->
+	<link href="css/magnific-popup.css" rel="stylesheet" type="text/css" />
+	<!-- Slider -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="css/owl.theme.default.min.css" />
+	<!-- Main Css -->
+	<link href="css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+	<link href="css/colors/default.css" rel="stylesheet" id="color-opt">
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+	<!--Google Captcha -->
+	<script src="https://www.google.com/recaptcha/api.js?render=6LeAc9MaAAAAAF0aWtAEGcto3f99llSOALIBDcZX"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56544932-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-56544932-1');
+	</script>
+
+	<style>
+		.sweet_loader {
+			width: 140px;
+			height: 140px;
+			margin: 0 auto;
+			animation-duration: 0.5s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-name: ro;
+			transform-origin: 50% 50%;
+			transform: rotate(0) translate(0, 0);
+		}
+
+		@keyframes ro {
+			100% {
+				transform: rotate(-360deg) translate(0, 0);
+			}
+		}
+	</style>
+
+	<script type="text/javascript">
+		function messageConatusWeb(type, message, url) {
+			if (url != "") {
+				Swal.fire({
+					title: 'Conatus Web',
+					text: message,
+					icon: type,
+					showCancelButton: false,
+					confirmButtonColor: '#61bad6',
+					confirmButtonText: 'Ok',
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				}).then((result) => {
+					if (result.isConfirmed) {
+						window.location = url
+					}
+				});
+			} else {
+				Swal.fire({
+					title: 'Conatus Web',
+					text: message,
+					icon: type,
+					showCancelButton: false,
+					confirmButtonColor: '#61bad6',
+					confirmButtonText: 'Ok',
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				});
+			}
+		}
+		function armar_mensaje(tipo, texto, url) {
+			swal({
+				title: "Conatus Web",
+				text: texto,
+				type: tipo,
+				showConfirmButton: true,
+				closeOnClickOutside: false
+			});
+		}
+		function mensaje_exitoso(texto, url) {
+			swal({
+				title: 'Conatus Web',
+				text: texto,
+				type: 'success',
+				showConfirmButton: true
+			}).then((result) => {
+				if (result.value) {
+					setTimeout("location.href='" + url + "'", 0);
+				}
+			});
+			setTimeout("location.href='" + url + "'", 4000);
+		}
+		function mensaje_error(texto, url) {
+			swal({
+				title: 'Conatus Web',
+				text: texto,
+				type: 'error',
+				showConfirmButton: true
+			}).then((result) => {
+				if (result.value) {
+					setTimeout("location.href='" + url + "'", 0);
+				}
+			});
+		}
+		$(document).ready(function () {
+			$("#send_form").click(function (e) {
+				e.preventDefault();
+				grecaptcha.ready(function () {
+					grecaptcha.execute('6LeAc9MaAAAAAF0aWtAEGcto3f99llSOALIBDcZX', { action: 'submit' }).then(function (token) {
+						var datos = new FormData();
+						var nombre = $("#name").val();
+						var email = $("#email").val();
+						var subject = $("#subject").val();
+						var comments = $("#comments").val();
+
+						datos.append("nombre", nombre);
+						datos.append("email", email);
+						datos.append("subject", subject);
+						datos.append("comments", comments);
+						datos.append("token", token);
+						Swal.fire({
+							title: 'Conatus Web',
+							text: "¿Deseas enviar el mensaje?",
+							icon: "warning",
+							showCancelButton: true,
+							confirmButtonColor: '#61bad6',
+							confirmButtonText: 'Si!',
+							allowOutsideClick: false,
+							allowEscapeKey: false
+						}).then((result) => {
+							if (result.isConfirmed) {
+								$.ajax({
+									type: "POST",
+									url: "php/procesar_form_contacto.php",
+									dataType: 'text',
+									cache: false,
+									contentType: false,
+									processData: false,
+									data: datos,
+									beforeSend: function() {
+										Swal.fire({
+											allowOutsideClick: false,
+											allowEscapeKey: false,
+											didOpen: () => {
+												Swal.showLoading()
+											}
+										});
+									},
+									success: function(response) {
+										switch (response) {
+											case '1':
+												messageConatusWeb("warning", "Rellena los campos requeridos en el formulario para poder envíar tu solicitud. Por favor, verifica el formulario. Gracias!!", "");
+												break;
+											case '2':
+												messageConatusWeb("warning", "El email ingresado no es válido. Por favor, verifica la información ingresada en el formulario. Gracias!!", "");
+												break;
+											case '3':
+												messageConatusWeb("success", "Mensaje enviado con éxito. Pronto, nos pondremos en contacto con vos. Gracias!!", 'index.html');
+												break;
+											case '4':
+												messageConatusWeb("error", "Ups, no se pudo enviar tu mensaje. Actualizaremos la web, para que vuelvas a intentarlo. Gracias!!", 'index.html');
+												break;
+											case '5':
+												messageConatusWeb("error", "Ups, no reconocimos el Captcha enviado, actualizaremos la web para que vuelvas a intentarlo. Gracias!!", 'index.html');
+												break;
+											default:
+												messageConatusWeb("error", "Ups, ocurrio un error en el sistema, actualizaremos la web para que vuelvas a intentarlo. Gracias!!", 'index.html');
+												break;
+										}
+									}
+								});
+							}
+						});
+
+					});
+				});
+			});
+			$('.ancla').click(function () {
+				var link = $(this);
+				var anchor = link.attr('href');
+				$('html, body').stop().animate({
+					scrollTop: jQuery(anchor).offset().top
+				}, 2000);
+				return false;
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<!-- Loader -->
+	<!-- <div id="preloader">
+			<div id="status">
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+			</div>
+		</div> -->
+	<!-- Loader -->
+
+	<!-- Navbar STart -->
+	<header id="topnav" class="defaultscroll sticky">
+		<div class="container">
+			<!-- Logo container-->
+			<div>
+				<a class="logo" href="index.html">
+					<img src="images/logo.png" class="l-dark" height="64" alt="">
+					<img src="images/logo.png" class="l-light" height="64" alt="">
+				</a>
+			</div>
+			<!-- End Logo container-->
+			<div class="menu-extras">
+				<div class="menu-item">
+					<!-- Mobile menu toggle-->
+					<a class="navbar-toggle">
+						<div class="lines">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</a>
+					<!-- End mobile menu toggle-->
+				</div>
+			</div>
+
+			<div id="navigation">
+				<!-- Navigation Menu-->
+				<ul class="navigation-menu nav-light">
+					<li><a href="index.html">Conatus Web</a></li>
+				</ul><!--end navigation menu-->
+			</div><!--end navigation-->
+		</div><!--end container-->
+	</header><!--end header-->
+	<!-- Navbar End -->
+
+	<!-- Hero Start -->
+	<section class="bg-half-170 d-table w-100" style="background: url('images/logo2.jpg') center center;" id="home">
+		<div class="bg-overlay"></div>
+		<div class="container">
+			<div class="row align-items-center mt-md-5">
+				<div class="col-lg-5 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0 order-2 order-md-1">
+					<div class="card login_page shadow rounded border-0">
+						<div class="card-body">
+							<h5 class="card-title">Contáctanos ya!!</h5>
+							<!--<div class="col-md-12">
+										<p class="text-muted para-desc mb-0 mx-auto">
+											Sí deseas escribirnos para preguntar por un presupuesto, o cualquier otra inquietud, puedes hacerlo haciendo click <a href="mailto:info@conatusweb.com">aquí</a>.<br/>Gracias!!
+										</p>
+									</div>-->
+							<form method="post" name="contact-form" id="contact-form">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group position-relative">
+											<label>Nombres <span class="text-danger">*</span></label>
+											<i data-feather="user" class="fea icon-sm icons"></i>
+											<input name="name" id="name" type="text" class="form-control pl-5"
+												placeholder="Tu nombre :" required="">
+										</div>
+									</div><!--end col-->
+									<div class="col-md-6">
+										<div class="form-group position-relative">
+											<label>Email <span class="text-danger">*</span></label>
+											<i data-feather="mail" class="fea icon-sm icons"></i>
+											<input name="email" id="email" type="email" class="form-control pl-5"
+												placeholder="Tu email :" required="">
+										</div>
+									</div><!--end col-->
+									<div class="col-md-12">
+										<div class="form-group position-relative">
+											<label>Asunto</label>
+											<i data-feather="book" class="fea icon-sm icons"></i>
+											<input name="subject" id="subject" type="text" class="form-control pl-5"
+												placeholder="Asunto">
+										</div>
+									</div><!--end col-->
+									<div class="col-md-12">
+										<div class="form-group position-relative">
+											<label>Mensaje</label>
+											<i data-feather="message-circle" class="fea icon-sm icons"></i>
+											<textarea name="comments" id="comments" rows="4" class="form-control pl-5"
+												placeholder="Tu mensaje :" required="" style="resize: none;"></textarea>
+										</div>
+									</div>
+								</div><!--end row-->
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<button id="send_form" name="send_form"
+											class="submitBnt btn btn-primary btn-block g-recaptcha"
+											value="Enviar Mensaje"
+											data-sitekey="6LeAc9MaAAAAAF0aWtAEGcto3f99llSOALIBDcZX"
+											data-action='submit'>Enviar Mensaje</button>
+										<div id="simple-msg"></div>
+									</div><!--end col-->
+								</div><!--end row-->
+							</form><!--end form-->
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-6 offset-lg-1 col-md-6 order-1 order-md-2">
+					<div class="title-heading mt-4">
+						<h1 class="heading title-dark text-white mb-3">Si lo puedes imaginar, nosotros lo hacemos
+							realidad.</h1>
+						<!--<p class="para-desc para-dark text-light">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>-->
+						<div class="watch-video mt-4 pt-2">
+							<a href="#comienzaAqui" class="btn btn-primary mb-2 mr-2 ancla">Comienza aquí!!</a>
+							<!--<a href="http://vimeo.com/99025203" class="video-play-icon watch title-dark text-light mb-2"><i class="mdi mdi-play play-icon-circle text-center d-inline-block mr-2 rounded-circle text-white title-dark position-relative play play-iconbar"></i> WATCH VIDEO</a>-->
+						</div>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section><!--end section-->
+	<!-- Hero End -->
+
+	<!-- Shape Start -->
+	<div class="position-relative">
+		<div class="shape overflow-hidden text-white">
+			<svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+			</svg>
+		</div>
+	</div>
+	<!--Shape End-->
+
+	<!-- Partners start -->
+	<section class="py-4 border-bottom">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
+					<img src="images/client/dionisos_logo_blue.png" class="avatar avatar-ex-sm" alt="">
+				</div><!--end col-->
+
+				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
+					<img src="images/client/logo_aire_de_copas.png" class="avatar avatar-ex-sm" alt="">
+				</div><!--end col-->
+
+				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
+					<img src="images/client/logo_el_martillito.jpg" class="avatar avatar-ex-sm" alt="">
+				</div><!--end col-->
+
+				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
+					<img src="images/client/logo_risei.png" class="avatar avatar-ex-sm" alt="">
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section><!--end section-->
+	<!-- Partners End -->
+
+	<!-- Showcase Start -->
+	<section class="section bg-light" id="comienzaAqui">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+					<div class="section-title mb-4 pb-2">
+						<h4 class="title mb-4">¿Sueñas a diario con impulsar las ventas de tu negocio?</h4>
+						<p class="text-muted para-desc mb-0 mx-auto">¿Te pasa que siempre estás en la constante búsqueda
+							de cómo llegar a tu público o cliente?</p>
+						<p class="text-muted para-desc mb-0 mx-auto">Aunque tienes presencia en las redes sociales, ¿te
+							pasa que aún necesitas mayor visibilidad?</p>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row align-items-center">
+				<div class="col-lg-5 col-md-6 mt-4 pt-2">
+					<img src="images/illustrator/SEO_SVG.svg" class="img-fluid mx-auto d-block" alt="">
+				</div><!--end col-->
+
+				<div class="col-lg-7 col-md-6 mt-4 pt-2">
+					<div class="section-title ml-lg-5">
+						<h4 class="title mb-4">Despreocúpate <span class="text-primary">de estos aspectos</span> y deja
+							que nosotros te acompañemos en el impulso de tu negocio.</h4>
+						<p class="text-muted">Somos un equipo de profesionales con amplia experiencia en el mundo de la
+							tecnología y especializados en áreas como:</p>
+						<ul class="list-unstyled feature-list text-muted">
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Desarrollo y
+								programación Web</li>
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Diseño Gráfico
+							</li>
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Redacción &
+								Marketing Digital</li>
+						</ul>
+						<!--<a href="javascript:void(0)" class="mt-3 text-primary">Find Out More <i class="mdi mdi-chevron-right"></i></a>-->
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+		<div class="container mt-100 mt-60">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-6 order-2 order-md-1 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<div class="section-title">
+						<h4 class="title mb-4">Inspirados en una búsqueda constante</h4>
+						<p class="text-muted">Para ayudarte, asesorarte y acompañarte a cumplir tus objetivos en la
+							industria Web.</p>
+						<p class="text-muted">Sólo será necesario escuchar tus ideas, para crear una excelente
+							estrategia digital hecha a tu medida, a través del desarrollo de herramientas como:
+							aplicaciones y diseño de plataformas web con tecnología avanzada para potenciar tu negocio
+							en el mercado.</p>
+						<p class="text-muted">Esto es solo una parte de lo que podemos hacer por ti:</p>
+						<ul class="list-unstyled feature-list text-muted">
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Diseño
+								responsive; diseños totalmente adaptables para visualizar tu página desde cualquier
+								dispositivo, es importante que esto no prive a tus usuarios, poder verte desde cualquier
+								pantalla.</li>
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Posicionamiento
+								SEO; estar en los motores de búsqueda de Google es todo un reto, y en Conatus Web
+								trabajamos con estrategias puntuales para posicionar tu negocio en la web.</li>
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Integración de
+								tus Redes Sociales, porque conocemos la importancia de que tu sitio web, re-direccione a
+								tus usuarios sin problemas ni inconvenientes, hacia las redes en las que tienes
+								presencia.</li>
+							<li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Fácil
+								mantenimiento, bien sea que nosotros manejemos tú página o que tú decidas
+								auto-administrarla; para ambos casos te hacemos la experiencia más amena.</li>
+						</ul>
+						<p class="text-muted">Esto y mucho más puede ser tu realidad, a partir del momento en que
+							decidas avanzar con nuestro equipo de profesionales.</p>
+						<!--<a href="javascript:void(0)" class="btn btn-primary mt-3">Get Started <i class="mdi mdi-chevron-right"></i></a>-->
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-6 col-md-6 order-1 order-md-2">
+					<img src="images/hosting/deal-hend.png" class="img-fluid" alt="">
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section><!--end section-->
+	<!-- Showcase End -->
+
+	<!-- Section Start -->
+	<section class="section pt-md-4 pt-5" id="servicios">
+		<!-- Start Features -->
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+					<div class="section-title mb-4 pb-2">
+						<h4 class="title mb-4">¿Cómo lo haremos?</h4>
+						<p class="text-muted para-desc mx-auto mb-0">Gracias a <span
+								class="text-primary font-weight-bold">los diversos servicios, propuestas y herramientas
+								que te ofrecemos,</span> para que desarrolles y escales tu negocio con éxito de manera
+							online.</p>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row">
+				<div class="col-md-4 col-12 mt-5">
+					<div class="features text-center">
+						<div class="image position-relative d-inline-block">
+							<img src="images/icon/pen.svg" class="avatar avatar-small" alt="">
+						</div>
+
+						<div class="content mt-4">
+							<h4 class="title-2">Desarrollos de Sitios Web</h4>
+							<p class="text-muted mb-0 text-justify">Para ti que deseas mayor visibilidad y captación de
+								potenciales clientes; el desarrollo de tu página Web, sin duda alguna, es una de las
+								mejores herramientas para hacer crecer tu negocio.<br>En <span
+									class="text-primary font-weight-bold">Conatus Web,</span> además de asesorarte,
+								utilizamos diseños novedosos, con las últimas tecnologías del mercado y te ofrecemos
+								estrategias para posicionarte de manera orgánica en los motores de búsqueda de Google.
+							</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-md-4 col-12 mt-5">
+					<div class="features text-center">
+						<div class="image position-relative d-inline-block">
+							<img src="images/icon/video.svg" class="avatar avatar-small" alt="">
+						</div>
+
+						<div class="content mt-4">
+							<h4 class="title-2">Sistemas de Gestión</h4>
+							<p class="text-muted mb-0 text-justify">Atiende lo Importante.<br>Son muchos los temas que
+								como dueño/a de negocios debes estar al frente, por esta razón, diseñamos para ti
+								procesos de Sistemas de Gestión.<br>Imagina poder Planear, controlar, organizar y
+								mejorar tu negocio o tu organización, a través del desarrollo de un sistema que te
+								permita un control óptimo y preciso de tu negocio.</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-md-4 col-12 mt-5">
+					<div class="features text-center">
+						<div class="image position-relative d-inline-block">
+							<img src="images/icon/intellectual.svg" class="avatar avatar-small" alt="">
+						</div>
+
+						<div class="content mt-4">
+							<h4 class="title-2">Desarrollo de Apps</h4>
+							<p class="text-muted mb-0 text-justify">Conocemos que al menos el 75% del tráfico por
+								internet proviene de teléfonos móviles, por eso, en <span
+									class="text-primary font-weight-bold">Conatus Web</span> diseñamos para ti apps
+								optimizadas para cualquier versión móvil en sistemas Android o IOS.<br>Con una App, se
+								pueden generar ingresos y optimizar las gestiones dentro de tu negocio, como por
+								ejemplo, las compras de tus productos por parte de tus clientes. Así mismo, se pueden
+								ofrecer métodos más rápidos, seguros y sencillos para realizar alguna compra.</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-md-4 col-12 mt-5">
+					<div class="features text-center">
+						<div class="image position-relative d-inline-block">
+							<img src="images/icon/user.svg" class="avatar avatar-small" alt="">
+						</div>
+
+						<div class="content mt-4">
+							<h4 class="title-2">Tiendas Online</h4>
+							<p class="text-muted mb-0 text-justify">Convierte esa idea, en un gran negocio.
+								Desarrollamos tu tienda en internet de manera segura, con diversas funcionalidades en un
+								sólo clic. Descubre la tranquilidad de poder monitorear tus pedidos, recibir pagos,
+								mantener control de un stock actualizado y visualizar tus estadísticas de manera óptima.
+							</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-md-4 col-12 mt-5">
+					<div class="features text-center">
+						<div class="image position-relative d-inline-block">
+							<img src="images/icon/calendar.svg" class="avatar avatar-small" alt="">
+						</div>
+
+						<div class="content mt-4">
+							<h4 class="title-2">Diseño de Logos</h4>
+							<p class="text-muted mb-0 text-justify">Somos tus aliados a la hora de definir una identidad
+								para tu marca. Empatizamos con la importancia de que tus clientes se identifiquen y
+								conecten con tu empresa, es por ello, que te ayudamos a destacarte de la competencia,
+								generando estrategias que permitan la captación constante de potenciales clientes.</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-md-4 col-12 mt-5">
+					<div class="features text-center">
+						<div class="image position-relative d-inline-block">
+							<img src="images/icon/sand-clock.svg" class="avatar avatar-small" alt="">
+						</div>
+
+						<div class="content mt-4">
+							<h4 class="title-2">Redacción de Contenidos</h4>
+							<p class="text-muted mb-0 text-justify">Atendemos tu estrategia comunicacional, así como la
+								redacción de textos persuasivos para tu web, Landing Pages, e-mail marketing y redes
+								sociales. Si aún no tienes definida esa estrategia comunicacional, te ayudamos a
+								levantar toda la información necesaria para darle personalidad e identidad a tu marca.
+							</p>
+						</div>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row justify-content-center mt-5 pt-4">
+				<div class="col-lg-10 col-md-12">
+					<img src="images/software/mobile-hori.png" class="img-fluid d-block mx-auto" alt="">
+				</div><!--end col-->
+				<!--<div class="col-12 text-center pt-2">
+						<div class="alert alert-light alert-pills shadow" role="alert">
+							<span class="badge badge-pill badge-primary mr-1">Download</span>
+							<span class="content"> Trusted by the world's best <i class="mdi mdi-download"></i></span>
+						</div>
+					</div>end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+		<!-- End Features -->
+	</section>
+	<!-- ENDsection -->
+
+	<!-- Team Start -->
+	<section class="section bg-light" id="teamWeb">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="section-title mb-4 pb-2">
+						<h4 class="title mb-4" data-aos="fade-up" data-aos-duration="1000">Team Web</h4>
+						<p class="text-muted para-desc mx-auto mb-0" data-aos="fade-up" data-aos-duration="1400">
+							Descubre el equipo detrás de <span class="text-primary font-weight-bold">Conatus Web.</span>
+						</p>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-6 mt-4 pt-2" data-aos="fade-up" data-aos-duration="1300">
+					<div class="card team text-center rounded border-0">
+						<div class="card-body">
+							<div class="position-relative">
+								<img src="images/team/alvaro_gamboa.jpg"
+									class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
+								<ul class="list-unstyled social-icon team-icon mb-0 mt-4">
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+								</ul><!--end icon-->
+							</div>
+							<div class="content pt-3">
+								<h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Alvaro Gamboa</a>
+								</h5>
+								<small class="designation text-muted">Fundador - Web Developer</small>
+								<p class="text-muted mb-0 text-justify">Desarrollador web, con más de 8 años de
+									experiencia en sistemas web, como intranet. Soy fiel creyente de que, si puedes
+									imaginarlo puedo crearlo, puedo programarlo. Estoy constantemente actualizándome con
+									las últimas tecnologías, para brindarte soluciones sólidas y asertivas.</p>
+							</div>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-4 col-md-4 col-sm-6 mt-4 pt-2" data-aos="fade-up" data-aos-duration="1600">
+					<div class="card team text-center rounded border-0">
+						<div class="card-body">
+							<div class="position-relative">
+								<img src="images/team/johnny_gamboa.png"
+									class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
+								<ul class="list-unstyled social-icon team-icon mb-0 mt-4">
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+								</ul><!--end icon-->
+							</div>
+							<div class="content pt-3">
+								<h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Johnny Gamboa</a>
+								</h5>
+								<small class="designation text-muted">UX - Front End</small>
+								<p class="text-muted mb-0 text-justify">Soy músico, programador web y diseñador UX. Me
+									gusta idear soluciones innovadoras y accesibles basadas en las necesidades de los
+									usuarios. Por esta razón me apasiona crear productos tecnológicos que mejoren la
+									calidad de vida de las personas, siguiendo un proceso de diseño centrado en la
+									accesibilidad, la equidad y la facilidad de uso.</p>
+							</div>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-4 col-md-4 col-sm-6 mt-4 pt-2" data-aos="fade-up" data-aos-duration="1900">
+					<div class="card team text-center rounded border-0">
+						<div class="card-body">
+							<div class="position-relative">
+								<img src="images/team/dayana_gamboa.jpeg"
+									class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
+								<ul class="list-unstyled social-icon team-icon mb-0 mt-4">
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+									<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+												data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+								</ul><!--end icon-->
+							</div>
+							<div class="content pt-3">
+								<h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Dayana Gamboa</a>
+								</h5>
+								<small class="designation text-muted">Comunicadora Social</small>
+								<p class="text-muted mb-0 text-justify">Soy amante de la escritura, la redacción y el
+									Marketing Digital. La comunicación es vital para cualquier empresa, por eso mi foco
+									es poder ayudarte a crear e implantar tus estrategias de comunicación, que
+									potenciarán tu negocio digital.</p>
+							</div>
+						</div>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section><!--end section-->
+	<!-- Team End -->
+
+
+	<section class="section" id="precios">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+					<div class="section-title mb-4 pb-2">
+						<h4 class="title mb-4">Específicaciones Técnicas y Precios</h4>
+						<p class="text-muted para-desc mx-auto mb-0">Selecciona la especificación que más se adapte a
+							tus necesidades, igualmente, desde <span class="text-primary font-weight-bold">Conatus
+								Web</span> te acompañamos para tu mejor elección.</p>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row align-items-center">
+				<div class="col-md-4 col-12 mt-4 pt-2">
+					<div class="card pricing-rates best-plan bg-light text-center border-0 rounded">
+						<div class="card-body py-5">
+							<img src="images/icon/ticket1.svg" class="mb-4" height="50" alt="">
+							<h2 class="title text-uppercase mb-4">Landing Page + Creación de Contenido</h2>
+							<div class="d-flex justify-content-center mb-4">
+								<!--<p>Pedir</p>
+									<span class="h4 mb-0 mt-2"></span>
+									<span class="price h1 mb-0">Cotización</span>
+									<span class="h4 align-self-end mb-1"></span>-->
+							</div>
+							<ul class="feature list-unstyled pl-0 text-left">
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Rápida implementación</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Contenido en una página</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Adaptable a dispositivos móviles</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Formulario de contacto</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Cuentas de correo (Depende del
+									hosting)</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Estadísticas de visitas</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Alojamiento o hosting por un año</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>*Certificado de seguridad SSL (Este
+									certificado no está incluido en el presupuesto)</li>
+							</ul>
+							<p class="text-muted">*No incluye</p>
+							<a href="javascript:void(0)" class="btn btn-outline-primary btn-sm mt-4">Solicitar ya!</a>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-md-4 col-12 mt-4 pt-2">
+					<div class="card pricing-rates best-plan bg-light text-center border-0 rounded">
+						<div class="card-body py-5">
+							<img src="images/icon/ticket2.svg" class="mb-4" height="50" alt="">
+							<h2 class="title text-uppercase mb-4">Web + Creación de Contenidos</h2>
+							<div class="d-flex justify-content-center mb-4">
+								<!--<p>Desde</p>
+									<span class="h4 mb-0 mt-2">$</span>
+									<span class="price h1 mb-0">25000</span>
+									<span class="h4 align-self-end mb-1">ARS</span>-->
+							</div>
+							<ul class="feature list-unstyled pl-0 text-left">
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Construido en Wordpress</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Administrable</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Sección Noticias administrable</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>10 PáginasAdaptable a dispositivos
+									móviles</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Formulario de contacto</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Cuentas de correo (Depende del
+									hosting)</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Estadísticas de visitas</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Alojamiento o hosting por un año</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>*Certificado de seguridad SSL (Este
+									certificado no está incluido en el presupuesto)</li>
+							</ul>
+							<p class="text-muted">*No Incluye</p>
+							<a href="javascript:void(0)" class="btn btn-outline-primary btn-sm mt-4">Solicitar ya!</a>
+						</div>
+					</div>
+				</div><!--end col-->
+				<div class="col-md-4 col-12 mt-4 pt-2">
+					<div class="card pricing-rates best-plan overflow-hidden text-center border-0 shadow rounded">
+						<div class="card-body py-5">
+							<div class="lable text-center bg-primary pt-2 pb-2">
+								<h6 class="best text-white title-dark mb-0 text-uppercase">Full</h6>
+							</div>
+							<img src="images/icon/ticket3.svg" class="mb-4" height="50" alt="">
+							<h2 class="title text-uppercase mb-4">Web + E-commerce + Creación de Contenido</h2>
+							<div class="d-flex justify-content-center mb-4">
+								<!--<p>Desde</p>
+									<span class="h4 mb-0 mt-2">$</span>
+									<span class="price h1 mb-0">35000</span>
+									<span class="h4 align-self-end mb-1">ARS</span>-->
+							</div>
+							<ul class="feature list-unstyled pl-0 text-left">
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Administrable</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Sección Noticias administrable</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>5 Páginas interiores adicionales</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Adaptable a dispositivos móviles</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Formulario de contacto</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Carga de 50 productos (Inicial)</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Pago transferencia bancaria</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>5 Cuentas de correo</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Estadísticas de visitas</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Reportes de ventas e ingresos</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>Alojamiento o hosting por un año</li>
+								<li class="feature-list text-muted"><i data-feather="check"
+										class="fea icon-sm text-success mr-2"></i>*Certificado de seguridad SSL (Este
+									certificado no está incluido en el presupuesto)</li>
+							</ul>
+							<p class="text-muted">* No Incluye</p>
+							<a href="javascript:void(0)" class="btn btn-outline-primary btn-sm mt-4">Solicitar Ya!</a>
+						</div>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section>
+
+	<!-- Testi Start -->
+	<section class="section pt-md-4 pt-5 pt-sm-0 bg-light">
+		<div class="container pb-lg-4 mb-md-5 mb-4">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+					<div class="section-title mb-4 pb-2">
+						<h4 class="title mb-4">Que dicen de nosotros!!</h4>
+						<p class="text-muted para-desc mx-auto mb-0">Las siguientes citas son una muestra de nuestros
+							clientes a <span class="text-primary font-weight-bold">Conatus Web</span> por el excelente
+							servicio que les brindamos a cada uno de ellos de manera personalizada.</p>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row justify-content-center">
+				<div class="col-lg-9 mt-4 pt-2 text-center">
+					<div id="owl-fade" class="owl-carousel owl-theme">
+						<div class="customer-testi text-center">
+							<p class="text-muted h6 font-italic">"En aires de copas lanzamos nuestra página en junio
+								2020. Contratamos la empresa de servicios de CONTATUS WEB dándoles la responsabilidad de
+								que realizaran el diseño de la página web y puesta del woocommerce. Mi página es una
+								tienda virtual de vinos con alcance en la Ciudad Autónoma de Buenos Aires (C.AB.A) y
+								resto del país; contamos con un blog para noticias relacionadas con la actividad y de
+								verdad que los servicios que me dieron fueron tanto de asesoramiento para la compra de
+								hosting y página web, como el total apoyo en la realización del diseño de la tienda
+								virtual. Todo el trabajo inició con el diseño de las ideas de distribución de la página
+								y me ayudó mucho su mirada y experiencia en e-commerce. Hoy en día, cuento con
+								asesoramiento continuo y capacitación constante para utilizar la página. Ya la tienda
+								virtual cuenta con todo el circuito de venta de productos a elección, el proceso de pago
+								y los formularios de distribución. Todo el proceso completado e instalado"</p>
+							<img src="images/coments/aires de copa.png"
+								class="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
+								alt="Logo Aires de Copa">
+							<ul class="list-unstyled mb-0 mt-3">
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+							</ul>
+							<h6 class="text-primary">- Aires de Copa <small class="text-muted">Venta de Vinos</small>
+							</h6>
+						</div><!--end customer testi-->
+
+						<div class="customer-testi text-center">
+							<p class="text-muted h6 font-italic">"Me encanta trabajar con Conatus Web. Es un equipo que
+								está siempre dispuesto a ayudarme a resolver los problemas que me encuentro a nivel de
+								programación. Haber trabajado directamente con ellos, me permite asegurar que tienen una
+								capacidad resolutiva y de rápida respuesta. Manejan muy bien los lenguajes de
+								programación y saben utilizar con eficiencia las nuevas tecnologías de desarrollo web.
+								Seguiré trabajando con el equipo por mucho tiempo más."</p>
+							<img src="images/coments/Georgios.jpg"
+								class="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
+								alt="Imagen Georgios Karakitsios">
+							<ul class="list-unstyled mb-0 mt-3">
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+								<li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+							</ul>
+							<h6 class="text-primary">- Georgios Karakitsios <small class="text-muted">Marketing
+									Technology Specialist</small></h6>
+						</div><!--end customer testi-->
+					</div><!--end owl carousel-->
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section><!--end section-->
+	<div class="position-relative">
+		<div class="shape overflow-hidden text-white">
+			<svg viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
+			</svg>
+		</div>
+	</div>
+	<!-- How It Work End -->
+
+	<!-- Faq Start -->
+	<section class="section" id="proyectos">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+					<div class="section-title mb-4 pb-2">
+						<h4 class="title mb-4">Nuestro Portfolio <span class="text-primary">Conatus Web</span></h4>
+						<p class="text-muted para-desc mx-auto mb-0">Conoce las empresas <span
+								class="text-primary font-weight-bold">que han dado el paso de confiarnos sus
+								proyectos</span> y a los que les hemos dedicado tiempo en crearles sus diversos sistemas
+							online.
+						</p>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+
+			<div class="row" id="counter">
+				<div class="col-md-3 col-6 mt-4 pt-2">
+					<div class="counter-box text-center">
+						<img src="images/illustrator/Asset190.svg" height="70" alt="">
+						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="97">3</span>%</h2>
+						<h6 class="counter-head text-muted">Clientes Satisfechos</h6>
+					</div><!--end counter box-->
+				</div>
+
+				<div class="col-md-3 col-6 mt-4 pt-2">
+					<div class="counter-box text-center">
+						<img src="images/illustrator/Asset189.svg" height="70" alt="">
+						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="15">1</span>+</h2>
+						<h6 class="counter-head text-muted">Premios</h6>
+					</div><!--end counter box-->
+				</div>
+
+				<div class="col-md-3 col-6 mt-4 pt-2">
+					<div class="counter-box text-center">
+						<img src="images/illustrator/Asset192.svg" height="70" alt="">
+						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="2">0</span>K</h2>
+						<h6 class="counter-head text-muted">Colocación Laboral</h6>
+					</div><!--end counter box-->
+				</div>
+
+				<div class="col-md-3 col-6 mt-4 pt-2">
+					<div class="counter-box text-center">
+						<img src="images/illustrator/Asset187.svg" height="70" alt="">
+						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="98">3</span>%</h2>
+						<h6 class="counter-head text-muted">Projectos Terminados</h6>
+					</div><!--end counter box-->
+				</div>
+			</div><!--end row-->
+		</div><!--end container-->
+
+		<div class="container mt-100 mt-60">
+			<div class="row align-items-center">
+				<div class="col-lg-7 col-md-6">
+					<div class="faq-content mr-lg-5">
+						<div class="accordion" id="accordionExampleone">
+							<div class="card border-0 rounded mb-2">
+								<a data-toggle="collapse" href="#collapsetwo" class="faq position-relative collapsed"
+									aria-expanded="false" aria-controls="collapsetwo">
+									<div class="card-header border-0 bg-light p-3 pr-5" id="headingtwo">
+										<h6 class="title mb-0">Proyecto <span class="text-primary">Certificados
+												Risei</span></h6>
+									</div>
+								</a>
+								<div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"
+									data-parent="#accordionExampleone">
+									<div class="card-body px-2 py-4">
+										<p class="text-muted mb-0 faq-ans">Desarrollamos una intranet para que todos los
+											estudiantes de Risei puedan tener sus certificados y así compartirlos en las
+											diferentes plataformas, ya que el sistema cuenta con qr y validación por
+											parte del sistema, donde está su veracidad. Por el lado de la administración
+											de risei, cuentan con un ABM para certificados, estudiantes y los diferentes
+											perfiles que interactuan con el sistema.<br>Web: <a
+												href="https://certificados.risei.org/" target="_blank">Certificados
+												Risei</a></p>
+									</div>
+								</div>
+							</div>
+
+							<div class="card border-0 rounded mb-2">
+								<a data-toggle="collapse" href="#collapsethree" class="faq position-relative collapsed"
+									aria-expanded="false" aria-controls="collapsethree">
+									<div class="card-header border-0 bg-light p-3 pr-5" id="headingthree">
+										<h6 class="title mb-0">Proyecto <span class="text-primary">EL Martillito</span>
+										</h6>
+									</div>
+								</a>
+								<div id="collapsethree" class="collapse" aria-labelledby="headingthree"
+									data-parent="#accordionExampleone">
+									<div class="card-body px-2 py-4">
+										<p class="text-muted mb-0 faq-ans">El martillito es una empresa que se dedica a
+											la comercialización de productos de consumo masivo, como productos para el
+											hogar y de consumo personal.<br>Para este cliente se desarrolló una web y
+											una intranet.<br>La web es hoy en día su mayor generación de tráfico de
+											personas que terminan convirtiéndose en posibles clientes; de ahí la
+											importancia de haber trabajado con ellos una idea clara de su negocio para
+											plasmarlo así en su página web.<br>Por otra parte, la intranet se desarrolló
+											con la intención de poder comercializar y vender todos sus productos,
+											utilizando tecnología web de alto nivel.<br>Web: <a
+												href="https://elmartillito.com/" target="_blank">El Martillito</a></p>
+									</div>
+								</div>
+							</div>
+
+							<div class="card border-0 rounded mb-2">
+								<a data-toggle="collapse" href="#collapsefour" class="faq position-relative collapsed"
+									aria-expanded="false" aria-controls="collapsefour">
+									<div class="card-header border-0 bg-light p-3 pr-5" id="headingfour">
+										<h6 class="title mb-0">Proyecto <span class="text-primary">Risei</span></h6>
+									</div>
+								</a>
+								<div id="collapsefour" class="collapse" aria-labelledby="headingfour"
+									data-parent="#accordionExampleone">
+									<div class="card-body px-2 py-4">
+										<p class="text-muted mb-0 faq-ans">RISEI es un espacio académico de debate sobre
+											el proceso de enseñanza y aprendizaje de la investigación.<br>Con Risei,
+											pasamos a formar parte del equipo de asesoría tecnológica a la colaboración
+											de la creación de su página web e instalación, mantenimiento y soporte de su
+											plataforma de estudio.<br>Ahora Risei disfruta de una plataforma web que le
+											permite dar visibilidad a sus proyectos, congresos y formaciones en
+											general.<br>Web: <a href="https://risei.org/" target="_blank">Risei</a></p>
+									</div>
+								</div>
+							</div>
+
+							<div class="card border-0 rounded">
+								<a data-toggle="collapse" href="#collapsefive2" class="faq position-relative collapsed"
+									aria-expanded="false" aria-controls="collapsefive2">
+									<div class="card-header border-0 bg-light p-3 pr-5" id="headingfive2">
+										<h6 class="title mb-0">Proyecto <span class="text-primary">Aula virtual
+												Risei</span></h6>
+									</div>
+								</a>
+								<div id="collapsefive2" class="collapse" aria-labelledby="headingfive2"
+									data-parent="#accordionExampleone">
+									<div class="card-body px-2 py-4">
+										<p class="text-muted mb-0 faq-ans">Hemos desarrollado una plataforma educativa
+											personalizada en Moodle para RISEI, una organización académica internacional
+											que promueve la interacción entre docentes, investigadores, instituciones
+											educativas y organizaciones, con el objetivo de fomentar la formación
+											investigadora desde una perspectiva diversa y colaborativa.<br>Web: <a
+												href="https://evaris.risei.org/back/" target="_blank">Aula virtual</a>
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="card border-0 rounded">
+								<a data-toggle="collapse" href="#collapsesix" class="faq position-relative collapsed"
+									aria-expanded="false" aria-controls="collapsesix">
+									<div class="card-header border-0 bg-light p-3 pr-5" id="headingsix">
+										<h6 class="title mb-0">Proyecto <span class="text-primary">Formación
+												Risei</span></h6>
+									</div>
+								</a>
+								<div id="collapsesix" class="collapse" aria-labelledby="headingsix"
+									data-parent="#accordionExampleone">
+									<div class="card-body px-2 py-4">
+										<p class="text-muted mb-0 faq-ans">La formación de la experticia investigadora
+											es nuestro horizonte y por ello, a través de nuestros programas pretendemos
+											desarrollar un sistema de educación continua eficiente, colaborativo e
+											innovador para universitarios, profesionales e investigadores. Consolidar
+											competencias de investigación con fines de desarrollo, educación, innovación
+											y emprendimiento. <br>Web: <a href="https://formacion.risei.org/"
+												target="_blank">Formación Risei</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-5 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<img src="images/illustrator/faq.svg" alt="">
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</section><!--end section-->
+	<!-- Faq End -->
+
+	<!-- Shape Start -->
+	<div class="position-relative">
+		<div class="shape overflow-hidden text-light">
+			<svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+			</svg>
+		</div>
+	</div>
+	<!--Shape End-->
+
+	<!-- Footer Start -->
+	<footer class="footer bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+					<h4 class="text-dark footer-head">Conatus Web</h4>
+					<p class="mt-4 text-muted">Somos un equipo de profesionales con amplia experiencia en el mundo de la
+						tecnología y especializados en áreas como:</p>
+					<ul class="list-unstyled footer-list mt-4">
+						<li><i class="mdi mdi-chevron-right mr-1"></i>Desarrollo y programación Web</li>
+						<li><i class="mdi mdi-chevron-right mr-1"></i>Diseño Gráfico</li>
+						<li><i class="mdi mdi-chevron-right mr-1"></i>Redacción &amp; Marketing Digital</li>
+					</ul>
+					<ul class="list-unstyled social-icon social mb-0 mt-4">
+						<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+									data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+									data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+									data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
+									data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+					</ul><!--end icon-->
+				</div><!--end col-->
+
+				<div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<h4 class="text-dark footer-head">Nuestro Lema</h4>
+					<p class="mt-4 text-muted">"Si lo puedes imaginar, nosotros lo hacemos realidad"</p>
+				</div><!--end col-->
+
+				<div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<h4 class="text-dark footer-head">Nosotros</h4>
+					<ul class="list-unstyled footer-list mt-4">
+						<li><a href="#teamWeb" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
+								Team</a></li>
+						<li><a href="#servicios" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
+								Servicios</a></li>
+						<li><a href="#precios" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
+								Precios</a></li>
+						<li><a href="#proyectos" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
+								Proyectos</a></li>
+					</ul>
+				</div><!--end col-->
+
+				<div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<h4 class="text-dark footer-head">Contactanos</h4>
+					<p class="mt-4 text-muted">Escribenos y te responderemos a la brevedad posible, pide ya tu
+						presupuesto para esa fabulosa idea!!</p>
+					<div class="col-lg-12">
+						<a href="#home" class="btn btn-primary btn-block ancla">Contáctanos</a>
+					</div>
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</footer><!--end footer-->
+	<footer class="footer footer-bar">
+		<div class="container text-center">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="text-sm-left">
+						<p class="mb-0">© 2025. Desarrollado <i class="mdi mdi-heart text-danger"></i> por <a
+								href="https://www.conatusweb.com" target="_blank" class="text-reset">Conatus Web</a>.
+						</p>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<ul class="list-unstyled text-sm-right mb-0">
+						<li class="list-inline-item"><a href="javascript:void(0)"><img
+									src="images/payments/american-ex.png" class="avatar avatar-ex-sm"
+									title="American Express" alt=""></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><img
+									src="images/payments/discover.png" class="avatar avatar-ex-sm" title="Discover"
+									alt=""></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><img
+									src="images/payments/master-card.png" class="avatar avatar-ex-sm"
+									title="Master Card" alt=""></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/paypal.png"
+									class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/visa.png"
+									class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
+					</ul>
+				</div><!--end col-->
+			</div><!--end row-->
+		</div><!--end container-->
+	</footer><!--end footer-->
+	<!-- Footer End -->
+
+	<!-- Back to top -->
+	<a href="#" class="btn btn-icon btn-soft-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
+	<!-- Back to top -->
+
+	<!-- javascript -->
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/scrollspy.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific.init.js"></script>
+	<!-- SLIDER -->
+	<script src="js/owl.carousel.min.js "></script>
+	<script src="js/owl.init.js "></script>
+	<!-- Counter -->
+	<script src="js/counter.init.js "></script>
+	<!-- Icons -->
+	<script src="js/feather.min.js"></script>
+	<script src="https://unicons.iconscout.com/release/v2.1.9/script/monochrome/bundle.js"></script>
+	<!-- Main Js -->
+	<script src="js/app.js"></script>
+</body>
+
+</html>
