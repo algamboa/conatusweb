@@ -4411,7 +4411,7 @@ p {
   background: #303f57;
   padding: 60px 0;
   position: relative;
-  color: #adb5bd;
+  color: #ffffff;
 }
 
 .footer .logo-footer {
@@ -4470,10 +4470,14 @@ p {
 .footer .footer-list li a {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .footer .footer-list li a:hover {
-  color: #e6e8ea;
+  color: #0b5cd6;
+  text-decoration: underline !important;
+  text-underline-offset: 0.25em;
 }
 
 .footer .footer-list li:last-child {
@@ -4482,6 +4486,6 @@ p {
 
 .footer.footer-bar {
   padding: 30px 0;
-  border-top: 1px solid #3d4349;
+  border-top: 1px solid grey;
 }
 /*# sourceMappingURL=style.css.map */
