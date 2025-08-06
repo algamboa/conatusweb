@@ -1338,6 +1338,18 @@ button:not(:disabled) {
   z-index: 99;
 }
 
+.partner {
+  position: relative;
+  animation: mypartners 18s linear infinite;
+  white-space: nowrap;
+  gap: 120px;
+}
+
+@keyframes mypartners {
+  0% {transform: translateX(0px);}
+  100% {transform: translateX(-108%);}
+}
+
 .breadcrumb {
   letter-spacing: 0.5px;
   padding: 8px 24px;
