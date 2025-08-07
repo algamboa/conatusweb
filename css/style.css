@@ -1505,6 +1505,10 @@ button:not(:disabled) {
   color: #3c4858 !important;
 }
 
+.faq-content .card a.faq[data-toggle=collapse]:hover {
+  background-color: #f8f9fc;
+}
+
 .faq-content .card .title {
   font-size: 16px;
 }
