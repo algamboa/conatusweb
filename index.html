@@ -62,6 +62,40 @@
 				transform: rotate(-360deg) translate(0, 0);
 			}
 		}
+
+		.header-center {
+			text-align: center;
+		}
+
+		.language-switch {
+			font-weight: bold;
+		}
+
+		.language-switch a {
+			text-decoration: none;
+			margin: 0 5px;
+			color: #333;
+			/* o #fff si es nav-light */
+			transition: color 0.3s;
+		}
+
+		.language-switch a:hover {
+			color: #007bff;
+		}
+
+		.language-switch a.active {
+			color: #007bff;
+		}
+
+		.work-container img {
+			width: 100%;
+			height: 200px;
+			/* Ajusta la altura que quieras */
+			object-fit: cover;
+			/* Recorta manteniendo proporción */
+			border-radius: 6px;
+			/* opcional para bordes suaves */
+		}
 	</style>
 
 	<script type="text/javascript">
@@ -163,7 +197,7 @@
 									contentType: false,
 									processData: false,
 									data: datos,
-									beforeSend: function() {
+									beforeSend: function () {
 										Swal.fire({
 											allowOutsideClick: false,
 											allowEscapeKey: false,
@@ -172,7 +206,7 @@
 											}
 										});
 									},
-									success: function(response) {
+									success: function (response) {
 										switch (response) {
 											case '1':
 												messageConatusWeb("warning", "Rellena los campos requeridos en el formulario para poder envíar tu solicitud. Por favor, verifica el formulario. Gracias!!", "");
@@ -226,39 +260,35 @@
 		</div> -->
 	<!-- Loader -->
 
-	<!-- Navbar STart -->
+	<!-- Navbar Start -->
 	<header id="topnav" class="defaultscroll sticky">
-		<div class="container">
-			<!-- Logo container-->
-			<div>
+		<div class="container d-flex justify-content-between align-items-center">
+
+			<!-- Columna izquierda: logo -->
+			<div class="header-left">
 				<a class="logo" href="index.html">
 					<img src="images/logo.png" class="l-dark" height="64" alt="">
 					<img src="images/logo.png" class="l-light" height="64" alt="">
 				</a>
 			</div>
-			<!-- End Logo container-->
-			<div class="menu-extras">
-				<div class="menu-item">
-					<!-- Mobile menu toggle-->
-					<a class="navbar-toggle">
-						<div class="lines">
-							<span></span>
-							<span></span>
-							<span></span>
-						</div>
-					</a>
-					<!-- End mobile menu toggle-->
+
+			<!-- Columna centro: menú -->
+			<div class="header-center text-center flex-grow-1">
+				<ul class="navigation-menu nav-light d-flex justify-content-center mb-0">
+					<li><a href="index.html">Conatus Web</a></li>
+				</ul>
+			</div>
+
+			<!-- Columna derecha: idioma -->
+			<div class="header-right">
+				<div class="language-switch">
+					<a href="index.html" class="active">ES</a> |
+					<a href="index-EN.html">EN</a>
 				</div>
 			</div>
 
-			<div id="navigation">
-				<!-- Navigation Menu-->
-				<ul class="navigation-menu nav-light">
-					<li><a href="index.html">Conatus Web</a></li>
-				</ul><!--end navigation menu-->
-			</div><!--end navigation-->
-		</div><!--end container-->
-	</header><!--end header-->
+		</div>
+	</header>
 	<!-- Navbar End -->
 
 	<!-- Hero Start -->
@@ -355,32 +385,30 @@
 	<section class="py-4 border-bottom">
 		<div class="container d-flex">
 			<div class="partner d-flex gap-4 align-items-center" style="margin-right: 100px;">
-				<span><img src="images/client/dionisos_logo_blue.png" class="avatar" alt=""></span>
-				<span><img src="images/client/logo_aire_de_copas.png" class="avatar" alt=""></span>
+				<span><img src="images/client/durangoagency.png" class="avatar" alt="" width="350px"></span>
 				<span><img src="images/client/logo_el_martillito.jpg" class="avatar" alt="" width="100px"></span>
 				<span><img src="images/client/logo_risei.png" class="avatar" alt=""></span>
 			</div>
 			<div class="partner d-flex gap-4 align-items-center">
-				<span><img src="images/client/dionisos_logo_blue.png" class="avatar" alt=""></span>
-				<span><img src="images/client/logo_aire_de_copas.png" class="avatar" alt=""></span>
+				<span><img src="images/client/durangoagency.png" class="avatar" alt="" width="350px"></span>
 				<span><img src="images/client/logo_el_martillito.jpg" class="avatar" alt="" width="100px"></span>
 				<span><img src="images/client/logo_risei.png" class="avatar" alt=""></span>
 			</div>
-			<!--<div class="row justify-content-center">
-				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
-					<img src="images/client/dionisos_logo_blue.png" class="avatar avatar-ex-sm" alt="">
+			<!--<div class="row justify-content-between partner align-items-center">
+				<div class="col-3 text-center py-4">
+					<img src="images/client/durangoagency.png" class="avatar img-fluid" alt="">
 				</div>
 
-				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
-					<img src="images/client/logo_aire_de_copas.png" class="avatar avatar-ex-sm" alt="">
+				<div class="col-3 text-center py-4">
+					<img src="images/client/logo_aire_de_copas.png" class="avatar img-fluid" alt="">
 				</div>
 
-				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
-					<img src="images/client/logo_el_martillito.jpg" class="avatar avatar-ex-sm" alt="">
+				<div class="col-3 text-center py-4">
+					<img src="images/client/logo_el_martillito.jpg" class="avatar img-fluid" alt="" width="100px">
 				</div>
 
-				<div class="col-lg-2 col-md-2 col-6 text-center py-4">
-					<img src="images/client/logo_risei.png" class="avatar avatar-ex-sm" alt="">
+				<div class="col-3 text-center py-4">
+					<img src="images/client/logo_risei.png" class="avatar img-fluid" alt="">
 				</div>
 			</div>--><!--end row-->
 		</div><!--end container-->
@@ -436,7 +464,8 @@
 						<h4 class="text-white">Para ayudarte, asesorarte y acompañarte a cumplir tus objetivos en la
 							industria Web.</h4>
 						<p style="font-size: 18px;">Sólo será necesario escuchar tus ideas para crear una excelente
-							estrategia digital hecha a tu medida, a través del desarrollo de <strong>aplicaciones y diseño de plataformas web con tecnología avanzada</strong> para potenciar tu negocio
+							estrategia digital hecha a tu medida, a través del desarrollo de <strong>aplicaciones y
+								diseño de plataformas web con tecnología avanzada</strong> para potenciar tu negocio
 							en el mercado.</p>
 						<!--<a href="javascript:void(0)" class="btn btn-primary mt-3">Get Started <i class="mdi mdi-chevron-right"></i></a>-->
 					</div>
@@ -465,7 +494,8 @@
 						<img src="images/Responsive-design.jpg" class="card-img-top" alt="">
 						<div class="card-body">
 							<h5 class="card-title">Diseño responsivo</h5>
-							<p class="card-text">Diseños totalmente adaptables para visualizar tu sitio web desde cualquier
+							<p class="card-text">Diseños totalmente adaptables para visualizar tu sitio web desde
+								cualquier
 								dispositivo o tamaño de pantalla.</p>
 						</div>
 					</div>
@@ -475,7 +505,8 @@
 						<img src="images/SEO-position.jpg" class="card-img-top" alt="">
 						<div class="card-body">
 							<h5 class="card-title">Posicionamiento SEO</h5>
-							<p class="card-text">Estar en los motores de búsqueda de Google es todo un reto y en Conatus Web
+							<p class="card-text">Estar en los motores de búsqueda de Google es todo un reto y en Conatus
+								Web
 								trabajamos con estrategias puntuales para posicionar tu negocio en la web.</p>
 						</div>
 					</div>
@@ -512,7 +543,7 @@
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
 						<h2 class="title mb-4">Descubre lo fácil que puede ser</h2>
-						<p class="para-desc mx-auto mb-0"  style="font-size: 18px;">Gracias a <span
+						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Gracias a <span
 								class="text-primary font-weight-bold">los diversos servicios, propuestas y herramientas
 								que te ofrecemos,</span> podrás desarrollar y escalar tu negocio con éxito de manera
 							online.</p>
@@ -652,7 +683,8 @@
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
 						<h2 class="title text-white mb-4" data-aos="fade-up" data-aos-duration="1000">Team Web</h2>
-						<p class="para-desc text-white mx-auto mb-0" style="font-size: 18px;" data-aos="fade-up" data-aos-duration="1400">
+						<p class="para-desc text-white mx-auto mb-0" style="font-size: 18px;" data-aos="fade-up"
+							data-aos-duration="1400">
 							Descubre el equipo detrás de <span class="font-weight-bold">Conatus Web.</span>
 						</p>
 					</div>
@@ -761,8 +793,10 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title mb-4 text-white">Explora las especificaciones y precios que se adapten a tus necesidades</h2>
-						<p class="para-desc mx-auto mb-0 text-white" style="font-size: 18px;">Selecciona la especificación que más se adapte a
+						<h2 class="title mb-4 text-white">Explora las especificaciones y precios que se adapten a tus
+							necesidades</h2>
+						<p class="para-desc mx-auto mb-0 text-white" style="font-size: 18px;">Selecciona la
+							especificación que más se adapte a
 							tus necesidades. En <span class="text-primary font-weight-bold">Conatus
 								Web</span> te ayudamos a encontrar la mejor solución.</p>
 					</div>
@@ -771,10 +805,12 @@
 
 			<div class="row align-items-center">
 				<div class="col-md-4 col-12 mt-4 pt-2">
-					<div class="card pricing-rates best-plan text-center border-0 rounded" style="background-color: #e2e2e2;">
+					<div class="card pricing-rates best-plan text-center border-0 rounded"
+						style="background-color: #e2e2e2;">
 						<div class="card-body py-5">
 							<!--<img src="images/icon/ticket1.svg" class="mb-4" height="50" alt="">-->
-							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Standard</h2>
+							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Standard
+							</h2>
 							<h2 class="title text-uppercase mb-4">Landing Page + Creación de Contenido</h2>
 							<div class="d-flex justify-content-center mb-4">
 								<!--<p>Pedir</p>
@@ -809,10 +845,12 @@
 				</div><!--end col-->
 
 				<div class="col-md-4 col-12 mt-4 pt-2">
-					<div class="card pricing-rates best-plan text-center border-0 rounded" style="background-color: #e2e2e2;">
+					<div class="card pricing-rates best-plan text-center border-0 rounded"
+						style="background-color: #e2e2e2;">
 						<div class="card-body py-5">
 							<!--<img src="images/icon/ticket2.svg" class="mb-4" height="50" alt="">-->
-							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Advanced</h2>
+							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Advanced
+							</h2>
 							<h2 class="title text-uppercase mb-4">Web + Creación de Contenidos</h2>
 							<div class="d-flex justify-content-center mb-4">
 								<!--<p>Desde</p>
@@ -849,13 +887,15 @@
 					</div>
 				</div><!--end col-->
 				<div class="col-md-4 col-12 mt-4 pt-2">
-					<div class="card pricing-rates best-plan overflow-hidden text-center border-0 shadow rounded" style="background-color: #e2e2e2;">
+					<div class="card pricing-rates best-plan overflow-hidden text-center border-0 shadow rounded"
+						style="background-color: #e2e2e2;">
 						<div class="card-body py-5">
 							<div class="lable text-center bg-primary pt-2 pb-2">
 								<h6 class="best text-white title-dark mb-0 text-uppercase">Full</h6>
 							</div>
 							<!--<img src="images/icon/ticket3.svg" class="mb-4" height="50" alt="">-->
-							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Enterprice</h2>
+							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">
+								Enterprice</h2>
 							<h2 class="title text-uppercase mb-4">Web + E-commerce + Creación de Contenido</h2>
 							<div class="d-flex justify-content-center mb-4">
 								<!--<p>Desde</p>
@@ -906,7 +946,8 @@
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
 						<h2 class="title mb-4">Lo que cuentan nuestros clientes</h2>
-						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Las siguientes citas son una muestra de nuestros
+						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Las siguientes citas son una muestra
+							de nuestros
 							clientes a <span class="text-primary font-weight-bold">Conatus Web</span> por el excelente
 							servicio que les brindamos a cada uno de ellos de manera personalizada.</p>
 					</div>
@@ -918,13 +959,20 @@
 					<div id="owl-fade" class="owl-carousel owl-theme">
 						<div class="customer-testi text-center">
 							<p class="text-muted font-italic">"En aires de copas lanzamos nuestra página en junio de
-								2020. Contratamos los servicios de Conatus Web, dándoles la responsabilidad de realizar el diseño de 
-								la página web y puesta del woocommerce. Mi página es una tienda virtual de vinos con alcance en 
-								la Ciudad Autónoma de Buenos Aires (C.A.B.A) y el resto del país. Contamos con un blog para noticias 
-								relacionadas con la actividad y los servicios que me dieron fueron tanto de asesoramiento para la compra de
-								hosting y página web, como el total apoyo en la realización del diseño de la tienda virtual. Todo el trabajo 
-								inició con el diseño de las ideas de distribución de la página y me ayudó mucho su mirada y experiencia en e-commerce. 
-								Hoy en día, cuento con asesoramiento continuo y capacitación constante para utilizar la página. Ya la tienda
+								2020. Contratamos los servicios de Conatus Web, dándoles la responsabilidad de realizar
+								el diseño de
+								la página web y puesta del woocommerce. Mi página es una tienda virtual de vinos con
+								alcance en
+								la Ciudad Autónoma de Buenos Aires (C.A.B.A) y el resto del país. Contamos con un blog
+								para noticias
+								relacionadas con la actividad y los servicios que me dieron fueron tanto de
+								asesoramiento para la compra de
+								hosting y página web, como el total apoyo en la realización del diseño de la tienda
+								virtual. Todo el trabajo
+								inició con el diseño de las ideas de distribución de la página y me ayudó mucho su
+								mirada y experiencia en e-commerce.
+								Hoy en día, cuento con asesoramiento continuo y capacitación constante para utilizar la
+								página. Ya la tienda
 								virtual cuenta con todo el circuito de venta de productos a elección, el proceso de pago
 								y los formularios de distribución. Todo el proceso completado e instalado"</p>
 							<img src="images/coments/aires de copa.png"
@@ -972,9 +1020,9 @@
 	</div>
 	<!-- How It Work End -->
 
-	<!-- Faq Start -->
-	<section class="section" id="proyectos">
-		<div class="container">
+	<!-- Work Start -->
+	<section class="section">
+		<div class="container mt-60">
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
@@ -987,7 +1035,6 @@
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->
-
 			<div class="row" id="counter">
 				<div class="col-md-3 col-6 mt-4 pt-2">
 					<div class="counter-box text-center">
@@ -1021,138 +1068,257 @@
 					</div><!--end counter box-->
 				</div>
 			</div><!--end row-->
-		</div><!--end container-->
-
-		<div class="container mt-100 mt-60">
-			<div class="row align-items-center">
-				<div class="col-lg-7 col-md-6">
-					<div class="faq-content mr-lg-5">
-						<h4 class="px-3">Nuestros Proyectos</h4>
-						<div class="accordion" id="accordionExampleone">
-							<div class="card border-0 rounded">
-								<a data-toggle="collapse" href="#collapsetwo" class="faq position-relative collapsed"
-									aria-expanded="false" aria-controls="collapsetwo">
-									<div class="card-header bg-transparent border-bottom px-3 py-4" id="headingtwo">
-										<h6 class="title mb-0">Proyecto <span style="color: #0b5cd6;">Certificados
-												Risei</span></h6>
-									</div>
-								</a>
-								<div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"
-									data-parent="#accordionExampleone">
-									<div class="card-body px-2 py-4">
-										<p class="text-muted mb-0 faq-ans">Desarrollamos una intranet para que todos los
-											estudiantes de Risei puedan tener sus certificados y así compartirlos en las
-											diferentes plataformas, ya que el sistema cuenta con qr y validación por
-											parte del sistema, donde está su veracidad. Por el lado de la administración
-											de risei, cuentan con un ABM para certificados, estudiantes y los diferentes
-											perfiles que interactuan con el sistema.<br>Web: <a
-												href="https://certificados.risei.org/" target="_blank">Certificados
-												Risei</a></p>
-									</div>
-								</div>
-							</div>
-
-							<div class="card border-0 rounded">
-								<a data-toggle="collapse" href="#collapsethree" class="faq position-relative collapsed"
-									aria-expanded="false" aria-controls="collapsethree">
-									<div class="card-header bg-transparent border-bottom px-3 py-4" id="headingthree">
-										<h6 class="title mb-0">Proyecto <span style="color: #0b5cd6;">EL Martillito</span>
-										</h6>
-									</div>
-								</a>
-								<div id="collapsethree" class="collapse" aria-labelledby="headingthree"
-									data-parent="#accordionExampleone">
-									<div class="card-body px-2 py-4">
-										<p class="text-muted mb-0 faq-ans">El martillito es una empresa que se dedica a
-											la comercialización de productos de consumo masivo, como productos para el
-											hogar y de consumo personal.<br>Para este cliente se desarrolló una web y
-											una intranet.<br>La web es hoy en día su mayor generación de tráfico de
-											personas que terminan convirtiéndose en posibles clientes; de ahí la
-											importancia de haber trabajado con ellos una idea clara de su negocio para
-											plasmarlo así en su página web.<br>Por otra parte, la intranet se desarrolló
-											con la intención de poder comercializar y vender todos sus productos,
-											utilizando tecnología web de alto nivel.<br>Web: <a
-												href="https://elmartillito.com/" target="_blank">El Martillito</a></p>
-									</div>
-								</div>
-							</div>
-
-							<div class="card border-0 rounded">
-								<a data-toggle="collapse" href="#collapsefour" class="faq position-relative collapsed"
-									aria-expanded="false" aria-controls="collapsefour">
-									<div class="card-header bg-transparent border-bottom px-3 py-4" id="headingfour">
-										<h6 class="title mb-0">Proyecto <span style="color: #0b5cd6;">Risei</span></h6>
-									</div>
-								</a>
-								<div id="collapsefour" class="collapse" aria-labelledby="headingfour"
-									data-parent="#accordionExampleone">
-									<div class="card-body px-2 py-4">
-										<p class="text-muted mb-0 faq-ans">RISEI es un espacio académico de debate sobre
-											el proceso de enseñanza y aprendizaje de la investigación.<br>Con Risei,
-											pasamos a formar parte del equipo de asesoría tecnológica a la colaboración
-											de la creación de su página web e instalación, mantenimiento y soporte de su
-											plataforma de estudio.<br>Ahora Risei disfruta de una plataforma web que le
-											permite dar visibilidad a sus proyectos, congresos y formaciones en
-											general.<br>Web: <a href="https://risei.org/" target="_blank">Risei</a></p>
-									</div>
-								</div>
-							</div>
-
-							<div class="card border-0 rounded">
-								<a data-toggle="collapse" href="#collapsefive2" class="faq position-relative collapsed"
-									aria-expanded="false" aria-controls="collapsefive2">
-									<div class="card-header bg-transparent border-bottom px-3 py-4" id="headingfive2">
-										<h6 class="title mb-0">Proyecto <span style="color: #0b5cd6;">Aula virtual
-												Risei</span></h6>
-									</div>
-								</a>
-								<div id="collapsefive2" class="collapse" aria-labelledby="headingfive2"
-									data-parent="#accordionExampleone">
-									<div class="card-body px-2 py-4">
-										<p class="text-muted mb-0 faq-ans">Hemos desarrollado una plataforma educativa
-											personalizada en Moodle para RISEI, una organización académica internacional
-											que promueve la interacción entre docentes, investigadores, instituciones
-											educativas y organizaciones, con el objetivo de fomentar la formación
-											investigadora desde una perspectiva diversa y colaborativa.<br>Web: <a
-												href="https://evaris.risei.org/back/" target="_blank">Aula virtual</a>
-										</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="card border-0 rounded">
-								<a data-toggle="collapse" href="#collapsesix" class="faq position-relative collapsed"
-									aria-expanded="false" aria-controls="collapsesix">
-									<div class="card-header bg-transparent border-bottom px-3 py-4" id="headingsix">
-										<h6 class="title mb-0">Proyecto <span style="color: #0b5cd6;">Formación
-												Risei</span></h6>
-									</div>
-								</a>
-								<div id="collapsesix" class="collapse" aria-labelledby="headingsix"
-									data-parent="#accordionExampleone">
-									<div class="card-body px-2 py-4">
-										<p class="text-muted mb-0 faq-ans">La formación de la experticia investigadora
-											es nuestro horizonte y por ello, a través de nuestros programas pretendemos
-											desarrollar un sistema de educación continua eficiente, colaborativo e
-											innovador para universitarios, profesionales e investigadores. Consolidar
-											competencias de investigación con fines de desarrollo, educación, innovación
-											y emprendimiento. <br>Web: <a href="https://formacion.risei.org/"
-												target="_blank">Formación Risei</a>
-										</p>
-									</div>
-								</div>
-							</div>
+		</div>
+		<div class="container-fluid mt-100 mt-60">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-12">
+					<div
+						class="card features fea-primary rounded p-4 bg-light position-relative overflow-hidden border-0">
+						<span class="h1 icon2 text-primary">
+							<i class="uil uil-briefcase"></i>
+						</span>
+						<div class="card-body p-0 content">
+							<h5>Sistemas de gestión</h5>
+							<p class="para text-muted mb-0">
+								- Administración de usuarios, roles y permisos.<br />
+								- Paneles de control y reportes dinámicos<br />
+								- Programas de referidos y fidelización
+							</p>
 						</div>
 					</div>
 				</div><!--end col-->
 
-				<div class="col-lg-5 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0 d-none d-md-flex">
-					<img src="images/Project-team.svg" alt="" width="420">
+				<div class="col-lg-3 col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+					<div
+						class="card features fea-primary rounded p-4 bg-light position-relative overflow-hidden border-0">
+						<span class="h1 icon2 text-primary">
+							<i class="uil uil-desktop-alt"></i>
+						</span>
+						<div class="card-body p-0 content">
+							<h5>Desarrollo web</h5>
+							<p class="para text-muted mb-0">
+								- Sitios corporativos y páginas personalizadas<br />
+								- Scripts y plugins para <strong>WordPress</strong><br />
+								- Instalación, configuración y optimización de <strong>CMS</strong>
+							</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0 pt-2 pt-lg-0">
+					<div
+						class="card features fea-primary rounded p-4 bg-light position-relative overflow-hidden border-0">
+						<span class="h1 icon2 text-primary">
+							<i class="uil uil-crosshairs"></i>
+						</span>
+						<div class="card-body p-0 content">
+							<h5>Mantenimiento y soporte</h5>
+							<p class="para text-muted mb-0">
+								- Instalación, actualización y seguridad de sistemas<br />
+								- Optimización de rendimiento para sitios web<br />
+								- Resolución de errores técnicos
+							</p>
+						</div>
+					</div>
+				</div><!--end col-->
+
+				<div class="col-lg-3 col-md-6 col-12 mt-4 mt-lg-0 pt-2 pt-lg-0">
+					<div
+						class="card features fea-primary rounded p-4 bg-light position-relative overflow-hidden border-0">
+						<span class="h1 icon2 text-primary">
+							<i class="uil uil-mobile-android"></i>
+						</span>
+						<div class="card-body p-0 content">
+							<h5>Integraciones y automatización</h5>
+							<p class="para text-muted mb-0">
+								- Creación y consumo de APIs<br />
+								- Bots para automatizar procesos y tareas repetitivas<br />
+								- Conexión entre sistemas y plataformas externas
+							</p>
+						</div>
+					</div>
 				</div><!--end col-->
 			</div><!--end row-->
-		</div><!--end container-->
+			<div class="container mt-100">
+				<div class="row">
+					<ul class="col container-filter list-unstyled categories-filter text-center" id="filter">
+						<li class="list-inline-item"><a class="categories border d-block text-dark rounded active"
+								data-filter="*">All</a></li>
+						<li class="list-inline-item"><a class="categories border d-block text-dark rounded"
+								data-filter=".durango">Durango Agency</a></li>
+						<li class="list-inline-item"><a class="categories border d-block text-dark rounded"
+								data-filter=".risei">Risei</a></li>
+						<!--<li class="list-inline-item"><a class="categories border d-block text-dark rounded" data-filter=".photography">Photography</a></li>
+						<li class="list-inline-item"><a class="categories border d-block text-dark rounded" data-filter=".development">Development</a></li>-->
+					</ul>
+				</div><!--end row-->
+			</div><!--end container-->
+
+			<div class="container-fluid">
+				<div class="row container-grid projects-wrapper">
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 durango">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/durango-agency-1.png"
+									title="Login">
+									<img src="images/client/durango-agency-1.png" class="img-fluid"
+										alt="Durango Agency">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Login</a>
+									</h5>
+									<h6 class="text-muted tag mb-0">Durango Agency</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 durango">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/durango-agency-2.png"
+									title="Home">
+									<img src="images/client/durango-agency-2.png" class="img-fluid"
+										alt="Durango Agency">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Home</a></h5>
+									<h6 class="text-muted tag mb-0">Durango Agency</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 durango">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/durango-agency-3.png"
+									title="Profile">
+									<img src="images/client/durango-agency-3.png" class="img-fluid"
+										alt="Durango Agency">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Profile</a>
+									</h5>
+									<h6 class="text-muted tag mb-0">Durango Agency</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 durango">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/durango-agency-4.png"
+									title="Report">
+									<img src="images/client/durango-agency-4.png" class="img-fluid"
+										alt="Durango Agency">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Report</a>
+									</h5>
+									<h6 class="text-muted tag mb-0">Durango Agency</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 durango">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/durango-agency-5.png"
+									title="Edit Form">
+									<img src="images/client/durango-agency-5.png" class="img-fluid"
+										alt="Durango Agency">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Edit form</a>
+									</h5>
+									<h6 class="text-muted tag mb-0">Durango Agency</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 risei">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/risei-certificados-1.png"
+									title="Login">
+									<img src="images/client/risei-certificados-1.png" class="img-fluid" alt="Login">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Login</a>
+									</h5>
+									<h6 class="text-muted tag mb-0">Risei</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 risei">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/risei-certificados-2.png"
+									title="Admin">
+									<img src="images/client/risei-certificados-2.png" class="img-fluid" alt="Admin">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">Admin</a>
+									</h5>
+									<h6 class="text-muted tag mb-0">Risei</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 risei">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/risei-certificados-3.png"
+									title="List certificate">
+									<img src="images/client/risei-certificados-3.png" class="img-fluid"
+										alt="List certificate">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);" class="text-dark title">List
+											certificate</a></h5>
+									<h6 class="text-muted tag mb-0">Risei</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+
+					<div class="col-lg-3 col-md-6 col-12 spacing mt-3 risei">
+						<div
+							class="card border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+							<div class="card-body p-0">
+								<a class="mfp-image d-inline-block" href="images/client/risei-certificados-4.png"
+									title="Certificate">
+									<img src="images/client/risei-certificados-4.png" class="img-fluid"
+										alt="Certificate">
+								</a>
+								<div class="content bg-white p-3">
+									<h5 class="mb-0"><a href="javascript:void(0);"
+											class="text-dark title">Certificate</a></h5>
+									<h6 class="text-muted tag mb-0">Risei</h6>
+								</div>
+							</div>
+						</div>
+					</div><!--end col-->
+				</div><!--end row-->
+			</div><!--end container-->
+		</div>
 	</section><!--end section-->
-	<!-- Faq End -->
+	<!-- Work End -->
 
 	<!-- Shape Start -->
 	<div class="position-relative">
@@ -1189,10 +1355,14 @@
 					</ul>--><!--end icon-->
 
 					<ul class="list-unstyled d-flex d-inline-block mt-2">
-						<li><a href="javascript:void(0)"><i class="fa-brands fa-square-facebook fa-xl" style="color: #ffffff;"></i></a></li>
-						<li class="mx-3"><a href="javascript:void(0)"><i class="fa-brands fa-square-instagram fa-xl" style="color: #ffffff;"></i></a></li>
-						<li><a href="javascript:void(0)"><i class="fa-brands fa-square-twitter fa-xl" style="color: #ffffff;"></i></a></li>
-						<li class="mx-3"><a href="javascript:void(0)"><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></a></li>
+						<li><a href="javascript:void(0)"><i class="fa-brands fa-square-facebook fa-xl"
+									style="color: #ffffff;"></i></a></li>
+						<li class="mx-3"><a href="javascript:void(0)"><i class="fa-brands fa-square-instagram fa-xl"
+									style="color: #ffffff;"></i></a></li>
+						<li><a href="javascript:void(0)"><i class="fa-brands fa-square-twitter fa-xl"
+									style="color: #ffffff;"></i></a></li>
+						<li class="mx-3"><a href="javascript:void(0)"><i class="fa-brands fa-linkedin fa-xl"
+									style="color: #ffffff;"></i></a></li>
 					</ul>
 				</div><!--end col-->
 
@@ -1235,7 +1405,8 @@
 			<div class="row align-items-center">
 				<div class="col-sm-6">
 					<div class="text-sm-left">
-						<p class="mb-0">© 2025 <a href="https://www.conatusweb.com" target="_blank" class="text-reset">Conatus Web</a>.
+						<p class="mb-0">© 2025 <a href="https://www.conatusweb.com" target="_blank"
+								class="text-reset">Conatus Web</a>.
 							All rights reserved.
 						</p>
 					</div>
@@ -1275,6 +1446,10 @@
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific.init.js"></script>
+	<!-- Magnific -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/isotope.js"></script>
+	<script src="js/portfolio.init.js"></script>
 	<!-- SLIDER -->
 	<script src="js/owl.carousel.min.js "></script>
 	<script src="js/owl.init.js "></script>
