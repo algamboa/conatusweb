@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Conatus Web - Soluciones Tecnológicas</title>
+	<title>Conatus Web - Technology Solutions</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Desarrollo de páginas web y sistemas empresariales" />
 	<meta name="keywords" content="Web, Software, intranet, HTML, Php, jquery, wordpress, woocommerce, CMS, css" />
@@ -215,16 +215,16 @@
 												messageConatusWeb("warning", "El email ingresado no es válido. Por favor, verifica la información ingresada en el formulario. Gracias!!", "");
 												break;
 											case '3':
-												messageConatusWeb("success", "Mensaje enviado con éxito. Pronto, nos pondremos en contacto con vos. Gracias!!", 'index.html');
+												messageConatusWeb("success", "Mensaje enviado con éxito. Pronto, nos pondremos en contacto con vos. Gracias!!", 'index-EN.html');
 												break;
 											case '4':
-												messageConatusWeb("error", "Ups, no se pudo enviar tu mensaje. Actualizaremos la web, para que vuelvas a intentarlo. Gracias!!", 'index.html');
+												messageConatusWeb("error", "Ups, no se pudo enviar tu mensaje. Actualizaremos la web, para que vuelvas a intentarlo. Gracias!!", 'index-EN.html');
 												break;
 											case '5':
-												messageConatusWeb("error", "Ups, no reconocimos el Captcha enviado, actualizaremos la web para que vuelvas a intentarlo. Gracias!!", 'index.html');
+												messageConatusWeb("error", "Ups, no reconocimos el Captcha enviado, actualizaremos la web para que vuelvas a intentarlo. Gracias!!", 'index-EN.html');
 												break;
 											default:
-												messageConatusWeb("error", "Ups, ocurrio un error en el sistema, actualizaremos la web para que vuelvas a intentarlo. Gracias!!", 'index.html');
+												messageConatusWeb("error", "Ups, ocurrio un error en el sistema, actualizaremos la web para que vuelvas a intentarlo. Gracias!!", 'index-EN.html');
 												break;
 										}
 									}
@@ -266,7 +266,7 @@
 
 			<!-- Columna izquierda: logo -->
 			<div class="header-left">
-				<a class="logo" href="index.html">
+				<a class="logo" href="index-EN.html">
 					<img src="images/logo.png" class="l-dark" height="64" alt="">
 					<img src="images/logo.png" class="l-light" height="64" alt="">
 				</a>
@@ -275,15 +275,15 @@
 			<!-- Columna centro: menú -->
 			<div class="header-center text-center flex-grow-1">
 				<ul class="navigation-menu nav-light d-flex justify-content-center mb-0">
-					<li><a href="index.html">Conatus Web</a></li>
+					<li><a href="index-EN.html">Conatus Web</a></li>
 				</ul>
 			</div>
 
 			<!-- Columna derecha: idioma -->
 			<div class="header-right">
 				<div class="language-switch">
-					<a href="index.html" class="active">ES</a> |
-					<a href="index-EN.html">EN</a>
+					<a href="index.html">ES</a> |
+					<a href="index-EN.html" class="active">EN</a>
 				</div>
 			</div>
 
@@ -299,7 +299,7 @@
 				<div class="col-lg-5 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0 order-2 order-md-1">
 					<div class="card login_page shadow rounded border-0">
 						<div class="card-body">
-							<h5 class="card-title">Contáctanos ya!!</h5>
+							<h5 class="card-title">Contact us</h5>
 							<!--<div class="col-md-12">
 										<p class="text-muted para-desc mb-0 mx-auto">
 											Sí deseas escribirnos para preguntar por un presupuesto, o cualquier otra inquietud, puedes hacerlo haciendo click <a href="mailto:info@conatusweb.com">aquí</a>.<br/>Gracias!!
@@ -309,10 +309,10 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group position-relative">
-											<label>Nombres <span class="text-danger">*</span></label>
+											<label>Name <span class="text-danger">*</span></label>
 											<i data-feather="user" class="fea icon-sm icons"></i>
 											<input name="name" id="name" type="text" class="form-control pl-5"
-												placeholder="Tu nombre :" required="">
+												placeholder="Your name :" required="">
 										</div>
 									</div><!--end col-->
 									<div class="col-md-6">
@@ -320,23 +320,24 @@
 											<label>Email <span class="text-danger">*</span></label>
 											<i data-feather="mail" class="fea icon-sm icons"></i>
 											<input name="email" id="email" type="email" class="form-control pl-5"
-												placeholder="Tu email :" required="">
+												placeholder="Your email :" required="">
 										</div>
 									</div><!--end col-->
 									<div class="col-md-12">
 										<div class="form-group position-relative">
-											<label>Asunto</label>
+											<label>Subject</label>
 											<i data-feather="book" class="fea icon-sm icons"></i>
 											<input name="subject" id="subject" type="text" class="form-control pl-5"
-												placeholder="Asunto">
+												placeholder="Subject">
 										</div>
 									</div><!--end col-->
 									<div class="col-md-12">
 										<div class="form-group position-relative">
-											<label>Mensaje</label>
+											<label>Message</label>
 											<i data-feather="message-circle" class="fea icon-sm icons"></i>
 											<textarea name="comments" id="comments" rows="4" class="form-control pl-5"
-												placeholder="Tu mensaje :" required="" style="resize: none;"></textarea>
+												placeholder="Your message :" required=""
+												style="resize: none;"></textarea>
 										</div>
 									</div>
 								</div><!--end row-->
@@ -346,7 +347,7 @@
 											class="submitBnt btn btn-primary btn-block g-recaptcha"
 											value="Enviar Mensaje"
 											data-sitekey="6LeAc9MaAAAAAF0aWtAEGcto3f99llSOALIBDcZX"
-											data-action='submit'>Enviar Mensaje</button>
+											data-action='submit'>Submit</button>
 										<div id="simple-msg"></div>
 									</div><!--end col-->
 								</div><!--end row-->
@@ -357,11 +358,10 @@
 
 				<div class="col-lg-6 offset-lg-1 col-md-6 order-1 order-md-2">
 					<div class="title-heading mt-4">
-						<h1 class="heading title-dark text-white mb-3">Si lo puedes imaginar, nosotros lo hacemos
-							realidad.</h1>
+						<h1 class="heading title-dark text-white mb-3">If you can imagine it, we make it happen.</h1>
 						<!--<p class="para-desc para-dark text-light">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>-->
 						<div class="watch-video mt-4 pt-2">
-							<a href="#comienzaAqui" class="btn btn-primary mb-2 mr-2 ancla">Comienza aquí!!</a>
+							<a href="#comienzaAqui" class="btn btn-primary mb-2 mr-2 ancla">Get started</a>
 							<!--<a href="http://vimeo.com/99025203" class="video-play-icon watch title-dark text-light mb-2"><i class="mdi mdi-play play-icon-circle text-center d-inline-block mr-2 rounded-circle text-white title-dark position-relative play play-iconbar"></i> WATCH VIDEO</a>-->
 						</div>
 					</div>
@@ -421,11 +421,11 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title mb-4">¿Sueñas a diario con impulsar las ventas de tu negocio?</h2>
-						<p class="para-desc mb-0 mx-auto">¿Estás constantemente en la búsqueda
-							de cómo llegar a tu público o cliente?</p>
-						<p class="para-desc mb-0 mx-auto">Aunque tienes presencia en las redes sociales, ¿te
-							pasa que aún necesitas mayor visibilidad?</p>
+						<h2 class="title mb-4">Do you dream every day of boosting your business sales?</h2>
+						<p class="para-desc mb-0 mx-auto">Are you always searching for ways
+							to reach your audience or customer?</p>
+						<p class="para-desc mb-0 mx-auto">Although you have a presence on social networks,
+							do you still need more visibility?</p>
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->
@@ -437,17 +437,18 @@
 
 				<div class="col-lg-7 col-md-6 mt-4 pt-2">
 					<div class="section-title ml-lg-5">
-						<h2 class="title mb-4"><span class="text-primary">No te preocupes</span> y deja
-							que nosotros te acompañemos en el impulso de tu negocio.</h2>
-						<p>Somos un equipo de profesionales con amplia experiencia en el mundo de la
-							tecnología y especializados en áreas como:</p>
+						<h2 class="title mb-4">Don't worry <span class="text-primary">about these aspects</span> and let
+							us help you
+							boost your business.</h2>
+						<p>We are a team of professionals with expertise in the world of technology and specialized
+							in areas such as:</p>
 						<ul class="list-unstyled feature-list">
-							<li><i class="fa-solid fa-code"></i> Desarrollo y
-								programación Web</li>
-							<li><i class="fa-solid fa-palette"></i> Diseño Gráfico
+							<li><i class="fa-solid fa-code"></i> Web Development and
+								Programming</li>
+							<li><i class="fa-solid fa-palette"></i> Graphic Design
 							</li>
-							<li><i class="fa-solid fa-pen-to-square"></i> Redacción &
-								Marketing Digital</li>
+							<li><i class="fa-solid fa-pen-to-square"></i> Copywriting & Digital
+								Marketing</li>
 						</ul>
 						<!--<a href="javascript:void(0)" class="mt-3 text-primary">Find Out More <i class="mdi mdi-chevron-right"></i></a>-->
 					</div>
@@ -460,13 +461,13 @@
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0 mb-3 mb-md-0">
 					<div class="section-title">
-						<h2 class="mb-4 text-white">Inspirados en una búsqueda constante</h2>
-						<h4 class="text-white">Para ayudarte, asesorarte y acompañarte a cumplir tus objetivos en la
-							industria Web.</h4>
-						<p style="font-size: 18px;">Sólo será necesario escuchar tus ideas para crear una excelente
-							estrategia digital hecha a tu medida, a través del desarrollo de <strong>aplicaciones y
-								diseño de plataformas web con tecnología avanzada</strong> para potenciar tu negocio
-							en el mercado.</p>
+						<h2 class="mb-4 text-white">Inspired by a constant search</h2>
+						<h4 class="text-white">To help you, advise you and accompany you to achieve your goals
+							in the web industry.</h4>
+						<p style="font-size: 18px;">It is only necessary to listen to your ideas, to create an excellent
+							digital strategy designed to your needs, through the development of <strong>applications and
+								design of web platforms with advanced technology</strong> to enhance your business
+							in the market.</p>
 						<!--<a href="javascript:void(0)" class="btn btn-primary mt-3">Get Started <i class="mdi mdi-chevron-right"></i></a>-->
 					</div>
 				</div><!--end col-->
@@ -484,7 +485,7 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title text-white">Esto es solo una parte de lo que podemos hacer por ti:</h2>
+						<h2 class="title text-white">This is just a part of what we can do for you</h2>
 					</div>
 				</div>
 			</div>
@@ -493,10 +494,9 @@
 					<div class="card h-100">
 						<img src="images/Responsive-design.jpg" class="card-img-top" alt="">
 						<div class="card-body">
-							<h5 class="card-title">Diseño responsivo</h5>
-							<p class="card-text">Diseños totalmente adaptables para visualizar tu sitio web desde
-								cualquier
-								dispositivo o tamaño de pantalla.</p>
+							<h5 class="card-title">Responsive design</h5>
+							<p class="card-text">Fully adaptable designs to visualize your website from any device or
+								screen size.</p>
 						</div>
 					</div>
 				</div>
@@ -504,10 +504,10 @@
 					<div class="card h-100">
 						<img src="images/SEO-position.jpg" class="card-img-top" alt="">
 						<div class="card-body">
-							<h5 class="card-title">Posicionamiento SEO</h5>
-							<p class="card-text">Estar en los motores de búsqueda de Google es todo un reto y en Conatus
-								Web
-								trabajamos con estrategias puntuales para posicionar tu negocio en la web.</p>
+							<h5 class="card-title">SEO positioning</h5>
+							<p class="card-text">Being in Google search engines is a challenge, and in Conatus Web we
+								work with specific strategies
+								to position your business on the web.</p>
 						</div>
 					</div>
 				</div>
@@ -515,9 +515,10 @@
 					<div class="card h-100">
 						<img src="images/SocialNetworks-integration.jpg" class="card-img-top" alt="">
 						<div class="card-body">
-							<h5 class="card-title">Integración de tus Redes Sociales</h5>
-							<p class="card-text">Porque conocemos la importancia de que tu sitio web redireccione a
-								tus usuarios sin inconvenientes a las redes en las que tienes presencia.</p>
+							<h5 class="card-title">Integration of your Social Networks</h5>
+							<p class="card-text">Because we know how important it is that your website redirects your
+								users without problems
+								to the networks in which you have a presence.</p>
 						</div>
 					</div>
 				</div>
@@ -525,9 +526,9 @@
 					<div class="card h-100">
 						<img src="images/Maintenance-web.jpg" class="card-img-top" alt="">
 						<div class="card-body">
-							<h5 class="card-title">Fácil mantenimiento</h5>
-							<p class="card-text">Sea que nosotros manejemos tú página o que decidas
-								autogestionarla. En ambos casos, te hacemos la experiencia más amena.</p>
+							<h5 class="card-title">Easy maintenance</h5>
+							<p class="card-text">Either we manage your site or you decide to self-manage it. In both
+								cases we make the experience more enjoyable for you.</p>
 						</div>
 					</div>
 				</div>
@@ -542,11 +543,11 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title mb-4">Descubre lo fácil que puede ser</h2>
-						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Gracias a <span
-								class="text-primary font-weight-bold">los diversos servicios, propuestas y herramientas
-								que te ofrecemos,</span> podrás desarrollar y escalar tu negocio con éxito de manera
-							online.</p>
+						<h2 class="title mb-4">See how easy we do it</h2>
+						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Thanks to <span
+								class="text-primary font-weight-bold">the different services and solutions we offer you,
+							</span> you will be able to develop and scale your business successfully online.
+						</p>
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->
@@ -559,13 +560,12 @@
 						</div>
 
 						<div class="content mt-4">
-							<h4 class="title-2">Desarrollo de Sitios Web</h4>
-							<p class="mb-0 text-justify">Para ti que deseas mayor visibilidad y captación de
-								potenciales clientes, el desarrollo de tu página web es una de las
-								mejores herramientas para hacer crecer tu negocio.<!--<br>En <span
-									class="text-primary font-weight-bold">Conatus Web,</span> además de asesorarte,
-								utilizamos diseños novedosos, con las últimas tecnologías del mercado y te ofrecemos
-								estrategias para posicionarte de manera orgánica en los motores de búsqueda de Google.-->
+							<h4 class="title-2">Website Development</h4>
+							<p class="mb-0 text-justify">For you who want more visibility and potential clients,
+								the development of your web page is one of the best tools to make your business grow.
+								<!--<br>At <span
+									class="text-primary font-weight-bold">Conatus Web,</span> in addition to advising you, we use innovative designs, 
+								with the latest technologies on the market and we offer you strategies to position yourself organically in Google search engines.-->
 							</p>
 						</div>
 					</div>
@@ -578,12 +578,13 @@
 						</div>
 
 						<div class="content mt-4">
-							<h4 class="title-2">Sistemas de Gestión</h4>
-							<p class="mb-0 text-justify"><!--Son muchos los temas que
-								como dueño/a de negocios debes atender. Por esta razón, diseñamos para ti
-								procesos de Sistemas de Gestión.<br>-->Imagina poder planear, controlar, organizar y
-								mejorar tu negocio o tu organización a través del desarrollo de un sistema que te
-								permita un control óptimo y preciso de tu negocio.</p>
+							<h4 class="title-2">Management Systems</h4>
+							<p class="mb-0 text-justify"><!--As a business owner, there are many issues you need to deal with.
+								That's why we have designed management system processes for you.<br>-->Imagine being able to plan, control,
+								organize, and improve
+								your business or organization by developing a system that allows you to optimize and
+								precisely control your business.
+							</p>
 						</div>
 					</div>
 				</div><!--end col-->
@@ -595,14 +596,12 @@
 						</div>
 
 						<div class="content mt-4">
-							<h4 class="title-2">Desarrollo de Apps</h4>
-							<p class="mb-0 text-justify">Al menos el 75% del tráfico por
-								internet proviene de teléfonos móviles. En <span
-									class="text-primary font-weight-bold">Conatus Web</span> diseñamos para ti apps
-								optimizadas para sistemas Android o iOS.<!--<br>Con una App, se
-								pueden generar ingresos y optimizar las gestiones dentro de tu negocio, como por
-								ejemplo, las compras de tus productos por parte de tus clientes. Así mismo, se pueden
-								ofrecer métodos más rápidos, seguros y sencillos para realizar alguna compra.-->
+							<h4 class="title-2">App Development</h4>
+							<p class="mb-0 text-justify">At least 75% of internet traffic comes from mobile phones. At
+								<span class="text-primary font-weight-bold">Conatus Web</span> we design apps optimized
+								for Android or iOS systems for you.
+								<!--<br>With an app, you can generate income and optimize your business operations, such as your customers' purchases 
+								of your products. You can also offer faster, safer, and easier ways to make purchases.-->
 							</p>
 						</div>
 					</div>
@@ -615,11 +614,12 @@
 						</div>
 
 						<div class="content mt-4">
-							<h4 class="title-2">Tiendas Online</h4>
-							<p class="mb-0 text-justify">Convierte esa idea, en un gran negocio.
-								Desarrollamos tu tienda en internet de manera segura, con diversas funcionalidades en un
-								sólo clic. <!--Descubre la tranquilidad de poder monitorear tus pedidos, recibir pagos,
-								mantener control de un stock actualizado y visualizar tus estadísticas de manera óptima.-->
+							<h4 class="title-2">Online Stores</h4>
+							<p class="mb-0 text-justify">Turn that idea into a great business.
+								We develop your online store securely, with various features available in just one
+								click.
+								<!--Discover the peace of mind of being able to monitor your orders, receive payments, keep control of your stock,
+								and view your statistics in an optimal way.-->
 							</p>
 						</div>
 					</div>
@@ -632,12 +632,12 @@
 						</div>
 
 						<div class="content mt-4">
-							<h4 class="title-2">Diseño de Logos</h4>
-							<p class="mb-0 text-justify">Somos tus aliados a la hora de definir una identidad
-								para tu marca, <!--Empatizamos con la importancia de que tus clientes se identifiquen y
-								conecten con tu empresa. Es por ello que te ayudamos a destacarte de la competencia,-->
-								generando estrategias que permitan la captación constante de potenciales clientes.
-							</p>
+							<h4 class="title-2">Logo Design</h4>
+							<p class="mb-0 text-justify">We are your allies when it comes to defining your brand
+								identity,<!-- 
+								We understand how important it is for your customers to identify with and connect to your company. 
+								That's why we help you stand out from the competition--> by developing strategies that enable you to constantly
+								attract potential customers.</p>
 						</div>
 					</div>
 				</div><!--end col-->
@@ -649,11 +649,12 @@
 						</div>
 
 						<div class="content mt-4">
-							<h4 class="title-2">Redacción de Contenidos</h4>
-							<p class="mb-0 text-justify">Atendemos tu estrategia comunicacional, así como la
-								redacción de textos persuasivos para tu web, Landing Pages, e-mail marketing y redes
-								sociales. <!--Si aún no tienes definida esa estrategia comunicacional, te ayudamos a
-								levantar toda la información necesaria para darle personalidad e identidad a tu marca.-->
+							<h4 class="title-2">Copywriting</h4>
+							<p class="mb-0 text-justify">We take care of your communication strategy,
+								as well as writing persuasive texts for your website, landing pages, email marketing,
+								and social media. <!--
+								If you haven't yet defined your communication strategy, we can help you gather all the information you need 
+								to give your brand personality and identity.-->
 							</p>
 						</div>
 					</div>
@@ -682,10 +683,10 @@
 			<div class="row">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title text-white mb-4" data-aos="fade-up" data-aos-duration="1000">Team Web</h2>
+						<h2 class="title text-white mb-4" data-aos="fade-up" data-aos-duration="1000">Our Team</h2>
 						<p class="para-desc text-white mx-auto mb-0" style="font-size: 18px;" data-aos="fade-up"
 							data-aos-duration="1400">
-							Descubre el equipo detrás de <span class="font-weight-bold">Conatus Web.</span>
+							Discover the team behind <span class="font-weight-bold">Conatus Web.</span>
 						</p>
 					</div>
 				</div><!--end col-->
@@ -712,11 +713,14 @@
 							<div class="content pt-3">
 								<h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Alvaro Gamboa</a>
 								</h5>
-								<h6 class="designation text-muted">Fundador - Web Developer</h6>
-								<p class="mb-0 text-justify">Desarrollador web con más de 8 años de
-									experiencia en sistemas web, como intranet. Soy fiel creyente de que, si puedes
-									imaginarlo puedo crearlo, puedo programarlo. Estoy constantemente actualizándome con
-									las últimas tecnologías para brindarte soluciones sólidas y asertivas.</p>
+								<h6 class="designation text-muted">CEO - Web Developer</h6>
+								<p class="mb-0 text-justify">Web developer with over 8 years of experience in web
+									systems,
+									such as intranets. I firmly believe that if you can imagine it, I can create it and
+									program it.
+									I am constantly updating my knowledge of the latest technologies to provide you with
+									solid and assertive solutions.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -742,12 +746,14 @@
 							<div class="content pt-3">
 								<h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Johnny Gamboa</a>
 								</h5>
-								<h6 class="designation text-muted">UX - Front End</h6>
-								<p class="mb-0 text-justify">Soy músico, programador web y diseñador UX. Me
-									gusta idear soluciones innovadoras y accesibles basadas en las necesidades de los
-									usuarios. Me apasiona crear productos tecnológicos que mejoren la
-									calidad de vida de las personas, siguiendo un proceso de diseño centrado en la
-									accesibilidad, la equidad y la facilidad de uso.</p>
+								<h6 class="designation text-muted">UX Designer - Front End</h6>
+								<p class="mb-0 text-justify">I am a musician, web programmer, and UX designer. I enjoy
+									coming up
+									with innovative and accessible solutions based on user needs. I am passionate about
+									creating technological
+									products that improve people's quality of life, following a design process focused
+									on accessibility, equity,
+									and ease of use.</p>
 							</div>
 						</div>
 					</div>
@@ -773,11 +779,12 @@
 							<div class="content pt-3">
 								<h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Dayana Gamboa</a>
 								</h5>
-								<h6 class="designation text-muted">Comunicadora Social</h6>
-								<p class="mb-0 text-justify">Soy amante de la escritura, la redacción y el
-									Marketing Digital. La comunicación es vital para cualquier empresa, por eso mi foco
-									es poder ayudarte a crear e implantar estrategias de comunicación que
-									potenciarán tu negocio digital.</p>
+								<h6 class="designation text-muted">Journalist - Copywriter</h6>
+								<p class="mb-0 text-justify">I love writing, editing, and digital marketing.
+									Communication is vital
+									for any business, which is why my focus is on helping you create and implement
+									communication strategies that
+									will boost your digital business.</p>
 							</div>
 						</div>
 					</div>
@@ -793,12 +800,11 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title mb-4 text-white">Explora las especificaciones y precios que se adapten a tus
-							necesidades</h2>
-						<p class="para-desc mx-auto mb-0 text-white" style="font-size: 18px;">Selecciona la
-							especificación que más se adapte a
-							tus necesidades. En <span class="text-primary font-weight-bold">Conatus
-								Web</span> te ayudamos a encontrar la mejor solución.</p>
+						<h2 class="title mb-4 text-white">Explore the specifications and prices that fit your needs</h2>
+						<p class="para-desc mx-auto mb-0 text-white" style="font-size: 18px;">Select the specification
+							package that best meets your needs.
+							At <span class="text-primary font-weight-bold">Conatus Web,</span> we will help you make the
+							best choice.</p>
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->
@@ -811,7 +817,7 @@
 							<!--<img src="images/icon/ticket1.svg" class="mb-4" height="50" alt="">-->
 							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Standard
 							</h2>
-							<h2 class="title text-uppercase mb-4">Landing Page + Creación de Contenido</h2>
+							<h2 class="title text-uppercase mb-4">Landing Page + Content Creation</h2>
 							<div class="d-flex justify-content-center mb-4">
 								<!--<p>Pedir</p>
 									<span class="h4 mb-0 mt-2"></span>
@@ -820,26 +826,26 @@
 							</div>
 							<ul class="feature list-unstyled pl-0 text-left">
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Rápida implementación</li>
+										class="fea icon-sm text-primary mr-2"></i>Quick implementation</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Contenido en una página</li>
+										class="fea icon-sm text-primary mr-2"></i>Content on one page</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Adaptable a dispositivos móviles</li>
+										class="fea icon-sm text-primary mr-2"></i>Adaptable to mobile devices</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Formulario de contacto</li>
+										class="fea icon-sm text-primary mr-2"></i>Contact form</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Cuentas de correo (Depende del
-									hosting)</li>
+										class="fea icon-sm text-primary mr-2"></i>Email accounts (Depends on hosting)
+								</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Estadísticas de visitas</li>
+										class="fea icon-sm text-primary mr-2"></i>Traffic statistics</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Alojamiento o hosting por un año</li>
+										class="fea icon-sm text-primary mr-2"></i>Hosting for one year</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>*Certificado de seguridad SSL (Este
-									certificado no está incluido en el presupuesto)</li>
+										class="fea icon-sm text-primary mr-2"></i>*SSL security certificate (Not
+									included in the quote)</li>
 							</ul>
-							<p class="text-muted">*No incluye</p>
-							<a href="javascript:void(0)" class="btn btn-outline-primary mt-4">Solicitar ya!</a>
+							<p class="text-muted">*Not included</p>
+							<a href="javascript:void(0)" class="btn btn-outline-primary mt-4">Request a quote</a>
 						</div>
 					</div>
 				</div><!--end col-->
@@ -851,7 +857,7 @@
 							<!--<img src="images/icon/ticket2.svg" class="mb-4" height="50" alt="">-->
 							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">Advanced
 							</h2>
-							<h2 class="title text-uppercase mb-4">Web + Creación de Contenidos</h2>
+							<h2 class="title text-uppercase mb-4">Web + Content Creation</h2>
 							<div class="d-flex justify-content-center mb-4">
 								<!--<p>Desde</p>
 									<span class="h4 mb-0 mt-2">$</span>
@@ -860,29 +866,29 @@
 							</div>
 							<ul class="feature list-unstyled pl-0 text-left">
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Construido en Wordpress</li>
+										class="fea icon-sm text-primary mr-2"></i>Built on Wordpress</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Administrable</li>
+										class="fea icon-sm text-primary mr-2"></i>Maintainable</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Sección Noticias administrable</li>
+										class="fea icon-sm text-primary mr-2"></i>Manageable News Section</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>10 PáginasAdaptable a dispositivos
-									móviles</li>
+										class="fea icon-sm text-primary mr-2"></i>10 pages adaptable to mobile devices
+								</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Formulario de contacto</li>
+										class="fea icon-sm text-primary mr-2"></i>Contact form</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Cuentas de correo (Depende del
-									hosting)</li>
+										class="fea icon-sm text-primary mr-2"></i>Email accounts (Depends on hosting)
+								</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Estadísticas de visitas</li>
+										class="fea icon-sm text-primary mr-2"></i>Traffic statistics</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Alojamiento o hosting por un año</li>
+										class="fea icon-sm text-primary mr-2"></i>Hosting for one year</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>*Certificado de seguridad SSL (Este
-									certificado no está incluido en el presupuesto)</li>
+										class="fea icon-sm text-primary mr-2"></i>*SSL security certificate (Not
+									included in the quote)</li>
 							</ul>
-							<p class="text-muted">*No Incluye</p>
-							<a href="javascript:void(0)" class="btn btn-outline-primary mt-4">Solicitar ya!</a>
+							<p class="text-muted">*Not included</p>
+							<a href="javascript:void(0)" class="btn btn-outline-primary mt-4">Request a quote</a>
 						</div>
 					</div>
 				</div><!--end col-->
@@ -895,8 +901,8 @@
 							</div>
 							<!--<img src="images/icon/ticket3.svg" class="mb-4" height="50" alt="">-->
 							<h2 class="mb-3 text-white" style="background-color: #0b5cd6; border-radius: 8px;">
-								Enterprice</h2>
-							<h2 class="title text-uppercase mb-4">Web + E-commerce + Creación de Contenido</h2>
+								Enterprise</h2>
+							<h2 class="title text-uppercase mb-4">Web + E-commerce + Content Creation</h2>
 							<div class="d-flex justify-content-center mb-4">
 								<!--<p>Desde</p>
 									<span class="h4 mb-0 mt-2">$</span>
@@ -905,33 +911,33 @@
 							</div>
 							<ul class="feature list-unstyled pl-0 text-left">
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Administrable</li>
+										class="fea icon-sm text-primary mr-2"></i>Maintainable</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Sección Noticias administrable</li>
+										class="fea icon-sm text-primary mr-2"></i>Manageable News Section</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>5 Páginas interiores adicionales</li>
+										class="fea icon-sm text-primary mr-2"></i>5 additional interior pages</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Adaptable a dispositivos móviles</li>
+										class="fea icon-sm text-primary mr-2"></i>Adaptable to mobile devices</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Formulario de contacto</li>
+										class="fea icon-sm text-primary mr-2"></i>Contact form</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Carga de 50 productos (Inicial)</li>
+										class="fea icon-sm text-primary mr-2"></i>Load of 50 products (Initial)</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Pago transferencia bancaria</li>
+										class="fea icon-sm text-primary mr-2"></i>Payment by bank transfer</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>5 Cuentas de correo</li>
+										class="fea icon-sm text-primary mr-2"></i>5 email accounts</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Estadísticas de visitas</li>
+										class="fea icon-sm text-primary mr-2"></i>Traffic statistics</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Reportes de ventas e ingresos</li>
+										class="fea icon-sm text-primary mr-2"></i>Sales and income reports</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>Alojamiento o hosting por un año</li>
+										class="fea icon-sm text-primary mr-2"></i>Hosting for one year</li>
 								<li class="feature-list"><i data-feather="check"
-										class="fea icon-sm text-primary mr-2"></i>*Certificado de seguridad SSL (Este
-									certificado no está incluido en el presupuesto)</li>
+										class="fea icon-sm text-primary mr-2"></i>*SSL security certificate (Not
+									included in the quote)</li>
 							</ul>
-							<p class="text-muted">* No Incluye</p>
-							<a href="javascript:void(0)" class="btn btn-outline-primary mt-4">Solicitar Ya!</a>
+							<p class="text-muted">*Not included</p>
+							<a href="javascript:void(0)" class="btn btn-outline-primary mt-4">Request a quote</a>
 						</div>
 					</div>
 				</div><!--end col-->
@@ -945,11 +951,12 @@
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title mb-4">Lo que cuentan nuestros clientes</h2>
-						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Las siguientes citas son una muestra
-							de nuestros
-							clientes a <span class="text-primary font-weight-bold">Conatus Web</span> por el excelente
-							servicio que les brindamos a cada uno de ellos de manera personalizada.</p>
+						<h2 class="title mb-4">What our customers say</h2>
+						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">The following quotes are a sample of
+							our customers'
+							feedback to <span class="text-primary font-weight-bold">Conatus Web</span> for the excellent
+							personalized
+							service we provide to each of them.</p>
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->
@@ -958,23 +965,20 @@
 				<div class="col-lg-9 mt-4 pt-2 text-center">
 					<div id="owl-fade" class="owl-carousel owl-theme">
 						<div class="customer-testi text-center">
-							<p class="text-muted font-italic">"En aires de copas lanzamos nuestra página en junio de
-								2020. Contratamos los servicios de Conatus Web, dándoles la responsabilidad de realizar
-								el diseño de
-								la página web y puesta del woocommerce. Mi página es una tienda virtual de vinos con
-								alcance en
-								la Ciudad Autónoma de Buenos Aires (C.A.B.A) y el resto del país. Contamos con un blog
-								para noticias
-								relacionadas con la actividad y los servicios que me dieron fueron tanto de
-								asesoramiento para la compra de
-								hosting y página web, como el total apoyo en la realización del diseño de la tienda
-								virtual. Todo el trabajo
-								inició con el diseño de las ideas de distribución de la página y me ayudó mucho su
-								mirada y experiencia en e-commerce.
-								Hoy en día, cuento con asesoramiento continuo y capacitación constante para utilizar la
-								página. Ya la tienda
-								virtual cuenta con todo el circuito de venta de productos a elección, el proceso de pago
-								y los formularios de distribución. Todo el proceso completado e instalado"</p>
+							<p class="text-muted font-italic">"At Aires de Copas, we launched our website in June 2020.
+								We hired the services of Conatus Web,
+								assigning them the responsibility of designing the website and setting up WooCommerce.
+								My website is an online wine store serving
+								the Autonomous City of Buenos Aires (C.A.B.A.) and the rest of the country. We have a
+								blog for news related to the business,
+								and the services they provided included advice on purchasing hosting and website design,
+								as well as full support in designing the online store.
+								All the work began with the design of the page layout ideas, and their insight and
+								experience in e-commerce helped me a lot.
+								Today, I have ongoing advice and constant training on how to use the page. The online
+								store now has the entire sales circuit for products of your choice,
+								the payment process, and the distribution forms. The entire process is complete and
+								installed."</p>
 							<img src="images/coments/aires de copa.png"
 								class="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
 								alt="Logo Aires de Copa">
@@ -987,12 +991,13 @@
 						</div><!--end customer testi-->
 
 						<div class="customer-testi text-center">
-							<p class="text-muted font-italic">"Me encanta trabajar con Conatus Web. Es un equipo que
-								está siempre dispuesto a ayudarme a resolver los problemas que me encuentro a nivel de
-								programación. Haber trabajado directamente con ellos, me permite asegurar que tienen una
-								capacidad resolutiva y de rápida respuesta. Manejan muy bien los lenguajes de
-								programación y saben utilizar con eficiencia las nuevas tecnologías de desarrollo web.
-								Seguiré trabajando con el equipo por mucho tiempo más."</p>
+							<p class="text-muted font-italic">"I love working with Conatus Web. They are a team that is
+								always willing to help me solve
+								any programming issues I encounter. Having worked directly with them, I can assure you
+								that they are quick to respond and solve problems.
+								They are highly proficient in programming languages and know how to use new web
+								development technologies efficiently. I will continue working
+								with the team for a long time."</p>
 							<img src="images/coments/Georgios.jpg"
 								class="img-fluid avatar avatar-small rounded-circle mx-auto shadow"
 								alt="Imagen Georgios Karakitsios">
@@ -1020,27 +1025,28 @@
 	</div>
 	<!-- How It Work End -->
 
-	<!-- Work Start -->
-	<section class="section">
-		<div class="container mt-60">
+	<!-- Faq Start -->
+	<section class="section" id="proyectos">
+		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 text-center">
 					<div class="section-title mb-4 pb-2">
-						<h2 class="title mb-4">Nuestro portfolio</h2>
-						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Conoce las empresas <span
-								class="text-primary font-weight-bold">que han dado el paso de confiarnos sus
-								proyectos</span> y a los que les hemos dedicado tiempo en crearles sus diversos sistemas
-							online.
+						<h2 class="title mb-4"><span class="text-primary">Conatus Web</span> Portfolio</h2>
+						<p class="para-desc mx-auto mb-0" style="font-size: 18px;">Meet the companies that <span
+								class="text-primary font-weight-bold">have trusted us with their
+								projects</span> and to whom we have dedicated our time to creating their online
+							systems.
 						</p>
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->
+
 			<div class="row" id="counter">
 				<div class="col-md-3 col-6 mt-4 pt-2">
 					<div class="counter-box text-center">
 						<img src="images/illustrator/Asset190.svg" height="70" alt="">
 						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="97">3</span>%</h2>
-						<h6 class="counter-head text-muted">Clientes Satisfechos</h6>
+						<h6 class="counter-head text-muted">Satisfied Customers</h6>
 					</div><!--end counter box-->
 				</div>
 
@@ -1048,7 +1054,7 @@
 					<div class="counter-box text-center">
 						<img src="images/illustrator/Asset189.svg" height="70" alt="">
 						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="15">1</span>+</h2>
-						<h6 class="counter-head text-muted">Premios</h6>
+						<h6 class="counter-head text-muted">Awards</h6>
 					</div><!--end counter box-->
 				</div>
 
@@ -1056,7 +1062,7 @@
 					<div class="counter-box text-center">
 						<img src="images/illustrator/Asset192.svg" height="70" alt="">
 						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="2">0</span>K</h2>
-						<h6 class="counter-head text-muted">Colocación Laboral</h6>
+						<h6 class="counter-head text-muted">Job Placement</h6>
 					</div><!--end counter box-->
 				</div>
 
@@ -1064,11 +1070,11 @@
 					<div class="counter-box text-center">
 						<img src="images/illustrator/Asset187.svg" height="70" alt="">
 						<h2 class="mb-0 mt-4"><span class="counter-value" data-count="98">3</span>%</h2>
-						<h6 class="counter-head text-muted">Projectos Terminados</h6>
+						<h6 class="counter-head text-muted">Completed Projects</h6>
 					</div><!--end counter box-->
 				</div>
 			</div><!--end row-->
-		</div>
+		</div><!--end container-->
 		<div class="container-fluid mt-100 mt-60">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 col-12">
@@ -1078,11 +1084,11 @@
 							<i class="uil uil-briefcase"></i>
 						</span>
 						<div class="card-body p-0 content">
-							<h5>Sistemas de gestión</h5>
+							<h5>Management Systems</h5>
 							<p class="para text-muted mb-0">
-								- Administración de usuarios, roles y permisos.<br />
-								- Paneles de control y reportes dinámicos<br />
-								- Programas de referidos y fidelización
+								- User, role, and permission management<br />
+								- Dashboards and dynamic reports<br />
+								- Referral and loyalty programs<br/>&nbsp;
 							</p>
 						</div>
 					</div>
@@ -1095,11 +1101,11 @@
 							<i class="uil uil-desktop-alt"></i>
 						</span>
 						<div class="card-body p-0 content">
-							<h5>Desarrollo web</h5>
+							<h5>Web Development</h5>
 							<p class="para text-muted mb-0">
-								- Sitios corporativos y páginas personalizadas<br />
-								- Scripts y plugins para <strong>WordPress</strong><br />
-								- Instalación, configuración y optimización de <strong>CMS</strong>
+								- Corporate websites and custom pages<br />
+								- <strong>WordPress</strong> scripts and plugins<br />
+								- Installation, configuration, and optimization of <strong>CMS</strong>
 							</p>
 						</div>
 					</div>
@@ -1112,11 +1118,11 @@
 							<i class="uil uil-crosshairs"></i>
 						</span>
 						<div class="card-body p-0 content">
-							<h5>Mantenimiento y soporte</h5>
+							<h5>Maintenance & Support</h5>
 							<p class="para text-muted mb-0">
-								- Instalación, actualización y seguridad de sistemas<br />
-								- Optimización de rendimiento para sitios web<br />
-								- Resolución de errores técnicos
+								- System updates and security<br />
+								- Performance optimization<br />
+								- Troubleshooting and bug fixing<br/>&nbsp;<br/>&nbsp;
 							</p>
 						</div>
 					</div>
@@ -1129,11 +1135,11 @@
 							<i class="uil uil-mobile-android"></i>
 						</span>
 						<div class="card-body p-0 content">
-							<h5>Integraciones y automatización</h5>
+							<h5>Integrations & Automation</h5>
 							<p class="para text-muted mb-0">
-								- Creación y consumo de APIs<br />
-								- Bots para automatizar procesos y tareas repetitivas<br />
-								- Conexión entre sistemas y plataformas externas
+								- API creation and integration<br />
+								- Bots to automate processes and repetitive tasks<br />
+								- Connecting systems and third-party platforms
 							</p>
 						</div>
 					</div>
@@ -1318,7 +1324,7 @@
 			</div><!--end container-->
 		</div>
 	</section><!--end section-->
-	<!-- Work End -->
+	<!-- Faq End -->
 
 	<!-- Shape Start -->
 	<div class="position-relative">
@@ -1336,14 +1342,14 @@
 			<div class="row">
 				<div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
 					<h4 class="text-white footer-head">Conatus Web</h4>
-					<p class="mt-4">Somos un equipo de profesionales con amplia experiencia en el mundo de la
-						tecnología y el diseño web.</p>
-					<!--<ul class="list-unstyled footer-list mt-4">
-						<li><i class="mdi mdi-chevron-right mr-1"></i>Desarrollo y programación Web</li>
-						<li><i class="mdi mdi-chevron-right mr-1"></i>Diseño Gráfico</li>
-						<li><i class="mdi mdi-chevron-right mr-1"></i>Redacción &amp; Marketing Digital</li>
-					</ul>
-					<ul class="list-unstyled social-icon social mb-0 mt-4">
+					<p class="mt-4">We are a team of professionals with extensive experience in the world
+						of technology and web design.</p>
+					<!--<ul class="list-unstyled footer-list mt-4 text-white">
+						<li><i class="mdi mdi-chevron-right mr-1"></i>Web development and programming</li>
+						<li><i class="mdi mdi-chevron-right mr-1"></i>Graphic Design</li>
+						<li><i class="mdi mdi-chevron-right mr-1"></i>Copywriting &amp; Digital Marketing</li>
+					</ul>-->
+					<!--<ul class="list-unstyled social-icon social mb-0 mt-4">
 						<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
 									data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
@@ -1367,34 +1373,26 @@
 				</div><!--end col-->
 
 				<div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-					<h4 class="text-white footer-head">Nuestro Lema</h4>
-					<p class="mt-4">"Si lo puedes imaginar, nosotros lo hacemos realidad"</p>
+					<h4 class="text-white footer-head">Our Motto</h4>
+					<p class="mt-4">"If you can imagine it, we make it happen"</p>
 				</div><!--end col-->
 
 				<div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-					<h4 class="text-white footer-head">Nosotros</h4>
+					<h4 class="text-white footer-head">About Us</h4>
 					<ul class="list-unstyled footer-list mt-4">
-						<li><a href="#teamWeb" class="text-white ancla">Team</a></li>
-						<li><a href="#servicios" class="text-white ancla">Servicios</a></li>
-						<li><a href="#precios" class="text-white ancla">Precios</a></li>
-						<li><a href="#proyectos" class="text-white ancla">Proyectos</a></li>
-						<!--<li><a href="#teamWeb" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
-								Team</a></li>
-						<li><a href="#servicios" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
-								Servicios</a></li>
-						<li><a href="#precios" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
-								Precios</a></li>
-						<li><a href="#proyectos" class="text-muted ancla"><i class="mdi mdi-chevron-right mr-1"></i>
-								Proyectos</a></li>-->
+						<li><a href="#teamWeb" class="text-white">Team</a></li>
+						<li><a href="#servicios" class="text-white">Services</a></li>
+						<li><a href="#precios" class="text-white">Prices</a></li>
+						<li><a href="#proyectos" class="text-white">Projects</a></li>
 					</ul>
 				</div><!--end col-->
 
 				<div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-					<h4 class="text-white footer-head">Contáctanos</h4>
-					<p class="mt-4">Escríbenos y te responderemos a la brevedad posible. Pide ya tu
-						presupuesto para esa fabulosa idea</p>
+					<h4 class="text-white footer-head">Contact Us</h4>
+					<p class="mt-4">Write to us and we will respond as soon as possible.
+						Request a quote for that fabulous idea now!</p>
 					<div class="col-lg-12 px-2">
-						<a href="#home" class="btn btn-primary btn-block ancla">Contáctanos</a>
+						<a href="#home" class="btn btn-primary btn-block ancla">Contact us</a>
 					</div>
 				</div><!--end col-->
 			</div><!--end row-->

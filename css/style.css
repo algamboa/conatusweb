@@ -29,7 +29,7 @@
  *     17.  Contact              *
  *     18.  Footer               *
  ================================*/
-@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 .bg-primary {
   background-color: #2f55d4 !important;
 }
@@ -1338,6 +1338,18 @@ button:not(:disabled) {
   z-index: 99;
 }
 
+.partner {
+  position: relative;
+  animation: mypartners 18s linear infinite;
+  white-space: nowrap;
+  gap: 120px;
+}
+
+@keyframes mypartners {
+  0% {transform: translateX(0px);}
+  100% {transform: translateX(-108%);}
+}
+
 .breadcrumb {
   letter-spacing: 0.5px;
   padding: 8px 24px;
@@ -1491,6 +1503,10 @@ button:not(:disabled) {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
   color: #3c4858 !important;
+}
+
+.faq-content .card a.faq[data-toggle=collapse]:hover {
+  background-color: #f8f9fc;
 }
 
 .faq-content .card .title {
@@ -1774,7 +1790,7 @@ button:not(:disabled) {
 }
 
 .social-icon li a:hover .fea-social {
-  fill: #2f55d4;
+  fill: #25a06e;
 }
 
 .social-icon.social li a {
@@ -1897,13 +1913,14 @@ body {
   font-family: "Nunito", sans-serif;
   overflow-x: hidden !important;
   font-size: 16px;
-  color: #161c2d;
+  color: #303f57;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-weight: 600;
+  color: #303f57;
 }
 
 ::-moz-selection {
@@ -1978,7 +1995,7 @@ p {
 
 .section-title .title {
   letter-spacing: 0.5px;
-  font-size: 30px;
+  font-size: 32px;
 }
 
 .text-shadow-title {
@@ -1986,7 +2003,7 @@ p {
 }
 
 .para-desc {
-  max-width: 600px;
+  max-width: 720px;
 }
 
 .mt-100 {
@@ -4407,10 +4424,10 @@ p {
 }
 
 .footer {
-  background: #202942;
+  background: #303f57;
   padding: 60px 0;
   position: relative;
-  color: #adb5bd;
+  color: #ffffff;
 }
 
 .footer .logo-footer {
@@ -4469,10 +4486,14 @@ p {
 .footer .footer-list li a {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .footer .footer-list li a:hover {
-  color: #e6e8ea;
+  color: #0b5cd6;
+  text-decoration: underline !important;
+  text-underline-offset: 0.25em;
 }
 
 .footer .footer-list li:last-child {
@@ -4481,6 +4502,6 @@ p {
 
 .footer.footer-bar {
   padding: 30px 0;
-  border-top: 1px solid #3d4349;
+  border-top: 1px solid grey;
 }
 /*# sourceMappingURL=style.css.map */
