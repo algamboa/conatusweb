@@ -10,30 +10,36 @@ $('.mfp-image').magnificPopup({
     }
 });
 
-//Portfolio filter
-$(window).on('load', function() {
+// Portfolio filter (stable Bootstrap-based filtering)
+$(window).on('load', function () {
     var $container = $('.projects-wrapper');
     var $filter = $('#filter');
-    $container.isotope({
-        filter: '*',
-        layoutMode: 'masonry',
-        animationOptions: {
-            duration: 750,
-            easing: 'linear'
-        }
-    });
-    $filter.find('a').click(function() {
-        var selector = $(this).attr('data-filter');
+    if (!$container.length || !$filter.length) {
+        return;
+    }
+
+    var $items = $container.find('.spacing');
+
+    $filter.find('a').on('click', function () {
+        var selector = $(this).attr('data-filter') || '*';
+
         $filter.find('a').removeClass('active');
         $(this).addClass('active');
-        $container.isotope({
-            filter: selector,
-            animationOptions: {
-                animationDuration: 750,
-                easing: 'linear',
-                queue: false,
+
+        if (selector === '*') {
+            $items.removeClass('d-none');
+            return false;
+        }
+
+        $items.each(function () {
+            var $item = $(this);
+            if ($item.is(selector)) {
+                $item.removeClass('d-none');
+            } else {
+                $item.addClass('d-none');
             }
         });
+
         return false;
     });
 });

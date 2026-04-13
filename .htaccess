@@ -1,0 +1,9 @@
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Keep old links working and consolidate to PHP entries
+RewriteRule ^index\.html$ /index.php [R=301,L]
+RewriteRule ^index-EN\.html$ /index-EN.php [R=301,L]
+</IfModule>
