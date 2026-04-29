@@ -25,35 +25,53 @@
 	<meta name="author" content="Conatus Web" />
 	<!-- favicon -->
 	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+	<link rel="preconnect" href="https://www.google.com" crossorigin>
+	<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<!-- Icons -->
 	<link href="css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.css">
-	<script src="https://kit.fontawesome.com/cc9468a767.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.css" media="print" onload="this.media='all'">
+	<noscript>
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.css">
+	</noscript>
 	<!-- Magnific -->
-	<link href="css/magnific-popup.css" rel="stylesheet" type="text/css" />
+	<link href="css/magnific-popup.css" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+	<noscript>
+		<link href="css/magnific-popup.css" rel="stylesheet" type="text/css" />
+	</noscript>
 	<!-- Slider -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css" />
-	<link rel="stylesheet" href="css/owl.theme.default.min.css" />
+	<link rel="stylesheet" href="css/owl.carousel.min.css" media="print" onload="this.media='all'" />
+	<link rel="stylesheet" href="css/owl.theme.default.min.css" media="print" onload="this.media='all'" />
+	<noscript>
+		<link rel="stylesheet" href="css/owl.carousel.min.css" />
+		<link rel="stylesheet" href="css/owl.theme.default.min.css" />
+	</noscript>
 	<!-- Main Css -->
 	<link href="css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
 	<link href="css/colors/default.css" rel="stylesheet" id="color-opt">
-
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		(function() {
+			var links = document.querySelectorAll('link[rel="stylesheet"][media="print"]');
+			links.forEach(function(link) {
+				if (!link.onload) {
+					link.media = 'all';
+				}
+			});
+		})();
+	</script>
 
 	<!--Google Captcha -->
 	
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56544932-1"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-J61BJ40YG7"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
-		gtag('config', 'UA-56544932-1');
+		gtag('config', 'G-J61BJ40YG7');
 	</script>
 
 	<style>
@@ -160,177 +178,6 @@
 			}
 		}
 	</style>
-
-	<script type="text/javascript">
-		function messageConatusWeb(type, message, url) {
-			if (url != "") {
-				Swal.fire({
-					title: 'Conatus Web',
-					text: message,
-					icon: type,
-					showCancelButton: false,
-					confirmButtonColor: '#61bad6',
-					confirmButtonText: 'Ok',
-					allowOutsideClick: false,
-					allowEscapeKey: false
-				}).then((result) => {
-					if (result.isConfirmed) {
-						window.location = url
-					}
-				});
-			} else {
-				Swal.fire({
-					title: 'Conatus Web',
-					text: message,
-					icon: type,
-					showCancelButton: false,
-					confirmButtonColor: '#61bad6',
-					confirmButtonText: 'Ok',
-					allowOutsideClick: false,
-					allowEscapeKey: false
-				});
-			}
-		}
-		function armar_mensaje(tipo, texto, url) {
-			swal({
-				title: "Conatus Web",
-				text: texto,
-				type: tipo,
-				showConfirmButton: true,
-				closeOnClickOutside: false
-			});
-		}
-		function mensaje_exitoso(texto, url) {
-			swal({
-				title: 'Conatus Web',
-				text: texto,
-				type: 'success',
-				showConfirmButton: true
-			}).then((result) => {
-				if (result.value) {
-					setTimeout("location.href='" + url + "'", 0);
-				}
-			});
-			setTimeout("location.href='" + url + "'", 4000);
-		}
-		function mensaje_error(texto, url) {
-			swal({
-				title: 'Conatus Web',
-				text: texto,
-				type: 'error',
-				showConfirmButton: true
-			}).then((result) => {
-				if (result.value) {
-					setTimeout("location.href='" + url + "'", 0);
-				}
-			});
-		}
-		$(document).ready(function () {
-			$("#started_at").val(Math.floor(Date.now() / 1000));
-			window.CONATUS_RECAPTCHA_SITE_KEY = "";
-			window.CONATUS_RECAPTCHA_READY = false;
-
-			function loadRecaptchaV3(siteKey) {
-				return new Promise(function (resolve, reject) {
-					if (window.grecaptcha && typeof window.grecaptcha.execute === "function") {
-						resolve();
-						return;
-					}
-					var script = document.createElement("script");
-					script.src = "https://www.google.com/recaptcha/api.js?render=" + encodeURIComponent(siteKey);
-					script.async = true;
-					script.defer = true;
-					script.onload = function () { resolve(); };
-					script.onerror = function () { reject(new Error("captcha-load-error")); };
-					document.head.appendChild(script);
-				});
-			}
-
-			$.getJSON("php/config_contact.php", function (config) {
-				if (config && config.success && config.siteKey) {
-					window.CONATUS_RECAPTCHA_SITE_KEY = config.siteKey;
-					loadRecaptchaV3(window.CONATUS_RECAPTCHA_SITE_KEY)
-						.then(function () { window.CONATUS_RECAPTCHA_READY = true; })
-						.catch(function () { window.CONATUS_RECAPTCHA_READY = false; });
-				}
-			});
-			$("#send_form").click(function (e) {
-				e.preventDefault();
-				if (!window.CONATUS_RECAPTCHA_SITE_KEY || !window.CONATUS_RECAPTCHA_READY || !window.grecaptcha) {
-					messageConatusWeb("error", "Error de configuración de captcha. Intentá nuevamente en unos minutos.", "");
-					return;
-				}
-				grecaptcha.ready(function () {
-					grecaptcha.execute(window.CONATUS_RECAPTCHA_SITE_KEY, { action: 'contact_form' }).then(function (token) {
-						var datos = new FormData();
-						var nombre = $.trim($("#name").val());
-						var email = $.trim($("#email").val());
-						var subject = $.trim($("#subject").val());
-						var comments = $.trim($("#comments").val());
-
-						datos.append("nombre", nombre);
-						datos.append("email", email);
-						datos.append("subject", subject);
-						datos.append("comments", comments);
-						datos.append("token", token);
-							datos.append("lang", "es");
-							datos.append("started_at", $("#started_at").val());
-							datos.append("website", $("#website").val());
-						Swal.fire({
-							title: 'Conatus Web',
-							text: "¿Deseas enviar el mensaje?",
-							icon: "warning",
-							showCancelButton: true,
-							confirmButtonColor: '#61bad6',
-							confirmButtonText: 'Si!',
-							allowOutsideClick: false,
-							allowEscapeKey: false
-						}).then((result) => {
-							if (result.isConfirmed) {
-								$.ajax({
-									type: "POST",
-									url: "php/procesar_form_contacto.php",
-									dataType: 'json',
-									cache: false,
-									contentType: false,
-									processData: false,
-									data: datos,
-									beforeSend: function () {
-										Swal.fire({
-											allowOutsideClick: false,
-											allowEscapeKey: false,
-											didOpen: () => {
-												Swal.showLoading()
-											}
-										});
-									},
-									success: function (response) {
-										if (!response || typeof response.type === 'undefined') {
-											messageConatusWeb("error", "Ups, ocurrió un error inesperado en el sistema.", "");
-											return;
-										}
-										messageConatusWeb(response.type, response.message, response.url || 'index.php');
-									},
-									error: function () {
-										messageConatusWeb("error", "Ups, no se pudo conectar con el servidor. Intentá nuevamente.", "");
-									}
-								});
-							}
-						});
-
-					});
-				});
-			});
-			$('.ancla').click(function () {
-				var link = $(this);
-				var anchor = link.attr('href');
-				$('html, body').stop().animate({
-					scrollTop: jQuery(anchor).offset().top
-				}, 2000);
-				return false;
-			});
-		});
-	</script>
 
 </head>
 
@@ -533,11 +380,11 @@
 						<p>Somos un equipo de profesionales con amplia experiencia en el mundo de la
 							tecnología y especializados en áreas como:</p>
 						<ul class="list-unstyled feature-list">
-							<li><i class="fa-solid fa-code"></i> Desarrollo y
+							<li><i class="mdi mdi-code-tags"></i> Desarrollo y
 								programación Web</li>
-							<li><i class="fa-solid fa-palette"></i> Diseño Gráfico
+							<li><i class="mdi mdi-palette"></i> Diseño Gráfico
 							</li>
-							<li><i class="fa-solid fa-pen-to-square"></i> Redacción &
+							<li><i class="mdi mdi-pencil-box-outline"></i> Redacción &
 								Marketing Digital</li>
 						</ul>
 						<!--<a href="javascript:void(0)" class="mt-3 text-primary">Find Out More <i class="mdi mdi-chevron-right"></i></a>-->
@@ -646,7 +493,7 @@
 				<div class="col-md-4 col-12 mt-5 px-4 pb-4">
 					<div class="features text-center">
 						<div>
-							<i class="fa-solid fa-code fa-2xl"></i>
+							<i class="mdi mdi-code-tags mdi-36px"></i>
 						</div>
 
 						<div class="content mt-4">
@@ -665,7 +512,7 @@
 				<div class="col-md-4 col-12 mt-5 px-4 pb-4">
 					<div class="features text-center">
 						<div>
-							<i class="fa-solid fa-computer fa-2xl"></i>
+							<i class="mdi mdi-monitor mdi-36px"></i>
 						</div>
 
 						<div class="content mt-4">
@@ -682,7 +529,7 @@
 				<div class="col-md-4 col-12 mt-5 px-4 pb-4">
 					<div class="features text-center">
 						<div>
-							<i class="fa-solid fa-mobile-screen fa-2xl"></i>
+							<i class="mdi mdi-cellphone mdi-36px"></i>
 						</div>
 
 						<div class="content mt-4">
@@ -702,7 +549,7 @@
 				<div class="col-md-4 col-12 mt-5 px-4 pb-4">
 					<div class="features text-center">
 						<div>
-							<i class="fa-solid fa-store fa-2xl"></i>
+							<i class="mdi mdi-storefront-outline mdi-36px"></i>
 						</div>
 
 						<div class="content mt-4">
@@ -719,7 +566,7 @@
 				<div class="col-md-4 col-12 mt-5 px-4 pb-4">
 					<div class="features text-center">
 						<div>
-							<i class="fa-solid fa-palette fa-2xl"></i>
+							<i class="mdi mdi-palette mdi-36px"></i>
 						</div>
 
 						<div class="content mt-4">
@@ -736,7 +583,7 @@
 				<div class="col-md-4 col-12 mt-5 px-4 pb-4">
 					<div class="features text-center">
 						<div>
-							<i class="fa-solid fa-pen-to-square fa-2xl"></i>
+							<i class="mdi mdi-pencil-box-outline mdi-36px"></i>
 						</div>
 
 						<div class="content mt-4">
@@ -1519,13 +1366,13 @@
 					</ul>--><!--end icon-->
 
 					<ul class="list-unstyled d-flex d-inline-block mt-2">
-						<li><a href="javascript:void(0)"><i class="fa-brands fa-square-facebook fa-xl"
+						<li><a href="javascript:void(0)"><i class="mdi mdi-facebook-box mdi-24px"
 									style="color: #ffffff;"></i></a></li>
-						<li class="mx-3"><a href="javascript:void(0)"><i class="fa-brands fa-square-instagram fa-xl"
+						<li class="mx-3"><a href="javascript:void(0)"><i class="mdi mdi-instagram mdi-24px"
 									style="color: #ffffff;"></i></a></li>
-						<li><a href="javascript:void(0)"><i class="fa-brands fa-square-twitter fa-xl"
+						<li><a href="javascript:void(0)"><i class="mdi mdi-twitter-box mdi-24px"
 									style="color: #ffffff;"></i></a></li>
-						<li class="mx-3"><a href="javascript:void(0)"><i class="fa-brands fa-linkedin fa-xl"
+						<li class="mx-3"><a href="javascript:void(0)"><i class="mdi mdi-linkedin-box mdi-24px"
 									style="color: #ffffff;"></i></a></li>
 					</ul>
 				</div><!--end col-->
@@ -1604,6 +1451,155 @@
 
 	<!-- javascript -->
 	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/sweetalert2.all.js"></script>
+	<script>
+		function messageConatusWeb(type, message, url) {
+			if (url != "") {
+				Swal.fire({
+					title: 'Conatus Web',
+					text: message,
+					icon: type,
+					showCancelButton: false,
+					confirmButtonColor: '#61bad6',
+					confirmButtonText: 'Ok',
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				}).then((result) => {
+					if (result.isConfirmed) {
+						window.location = url
+					}
+				});
+			} else {
+				Swal.fire({
+					title: 'Conatus Web',
+					text: message,
+					icon: type,
+					showCancelButton: false,
+					confirmButtonColor: '#61bad6',
+					confirmButtonText: 'Ok',
+					allowOutsideClick: false,
+					allowEscapeKey: false
+				});
+			}
+		}
+
+		$(document).ready(function() {
+			$("#started_at").val(Math.floor(Date.now() / 1000));
+			window.CONATUS_RECAPTCHA_SITE_KEY = "";
+			window.CONATUS_RECAPTCHA_READY = false;
+
+			function loadRecaptchaV3(siteKey) {
+				return new Promise(function(resolve, reject) {
+					if (window.grecaptcha && typeof window.grecaptcha.execute === "function") {
+						resolve();
+						return;
+					}
+					var script = document.createElement("script");
+					script.src = "https://www.google.com/recaptcha/api.js?render=" + encodeURIComponent(siteKey);
+					script.async = true;
+					script.defer = true;
+					script.onload = function() {
+						resolve();
+					};
+					script.onerror = function() {
+						reject(new Error("captcha-load-error"));
+					};
+					document.head.appendChild(script);
+				});
+			}
+
+			$.getJSON("php/config_contact.php", function(config) {
+				if (config && config.success && config.siteKey) {
+					window.CONATUS_RECAPTCHA_SITE_KEY = config.siteKey;
+					loadRecaptchaV3(window.CONATUS_RECAPTCHA_SITE_KEY)
+						.then(function() {
+							window.CONATUS_RECAPTCHA_READY = true;
+						})
+						.catch(function() {
+							window.CONATUS_RECAPTCHA_READY = false;
+						});
+				}
+			});
+
+			$("#send_form").click(function(e) {
+				e.preventDefault();
+				if (!window.CONATUS_RECAPTCHA_SITE_KEY || !window.CONATUS_RECAPTCHA_READY || !window.grecaptcha) {
+					messageConatusWeb("error", "Error de configuración de captcha. Intentá nuevamente en unos minutos.", "");
+					return;
+				}
+				grecaptcha.ready(function() {
+					grecaptcha.execute(window.CONATUS_RECAPTCHA_SITE_KEY, {
+						action: 'contact_form'
+					}).then(function(token) {
+						var datos = new FormData();
+						var nombre = $.trim($("#name").val());
+						var email = $.trim($("#email").val());
+						var subject = $.trim($("#subject").val());
+						var comments = $.trim($("#comments").val());
+
+						datos.append("nombre", nombre);
+						datos.append("email", email);
+						datos.append("subject", subject);
+						datos.append("comments", comments);
+						datos.append("token", token);
+						datos.append("lang", "es");
+						datos.append("started_at", $("#started_at").val());
+						datos.append("website", $("#website").val());
+						Swal.fire({
+							title: 'Conatus Web',
+							text: "¿Deseas enviar el mensaje?",
+							icon: "warning",
+							showCancelButton: true,
+							confirmButtonColor: '#61bad6',
+							confirmButtonText: 'Si!',
+							allowOutsideClick: false,
+							allowEscapeKey: false
+						}).then((result) => {
+							if (result.isConfirmed) {
+								$.ajax({
+									type: "POST",
+									url: "php/procesar_form_contacto.php",
+									dataType: 'json',
+									cache: false,
+									contentType: false,
+									processData: false,
+									data: datos,
+									beforeSend: function() {
+										Swal.fire({
+											allowOutsideClick: false,
+											allowEscapeKey: false,
+											didOpen: () => {
+												Swal.showLoading()
+											}
+										});
+									},
+									success: function(response) {
+										if (!response || typeof response.type === 'undefined') {
+											messageConatusWeb("error", "Ups, ocurrió un error inesperado en el sistema.", "");
+											return;
+										}
+										messageConatusWeb(response.type, response.message, response.url || 'index.php');
+									},
+									error: function() {
+										messageConatusWeb("error", "Ups, no se pudo conectar con el servidor. Intentá nuevamente.", "");
+									}
+								});
+							}
+						});
+					});
+				});
+			});
+
+			$('.ancla').click(function() {
+				var link = $(this);
+				var anchor = link.attr('href');
+				$('html, body').stop().animate({
+					scrollTop: jQuery(anchor).offset().top
+				}, 2000);
+				return false;
+			});
+		});
+	</script>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/jquery.easing.min.js"></script>
 	<script src="js/scrollspy.min.js"></script>
@@ -1621,7 +1617,6 @@
 	<script src="js/counter.init.js "></script>
 	<!-- Icons -->
 	<script src="js/feather.min.js"></script>
-	<script src="https://unicons.iconscout.com/release/v2.1.9/script/monochrome/bundle.js"></script>
 	<!-- Main Js -->
 	<script src="js/app.js"></script>
 </body>
